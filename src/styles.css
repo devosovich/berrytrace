@@ -5,6 +5,21 @@
   --bt-accent-green: #4c7a3d;
   --bt-bg: #fdfdfc;
   --bt-text: #3a3a3a;
+
+  /* Horizontal page padding. Breakpoints used across sections: 1024px (tablet), 640px (phone). */
+  --bt-gutter: 80px;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --bt-gutter: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --bt-gutter: 20px;
+  }
 }
 
 html {
@@ -25,6 +40,85 @@ a {
 
 a:hover {
   color: var(--bt-accent-dark);
+}
+
+/* Section label: short red line followed by an uppercase caption. */
+.bt-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bt-eyebrow-line {
+  flex: none;
+  width: 26px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--bt-accent);
+}
+
+.bt-eyebrow-text {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b6563;
+}
+
+/* Highlighted words inside headings. */
+.bt-accent {
+  color: var(--bt-accent);
+}
+
+/* Primary pill button. */
+.bt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--bt-accent), var(--bt-accent-dark));
+  color: var(--bt-bg);
+  font-family: 'Archivo', Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 18px 30px;
+  box-shadow: 0 12px 28px rgba(125, 31, 46, 0.28);
+  cursor: pointer;
+}
+
+.bt-btn--sm {
+  gap: 10px;
+  font-size: 15px;
+  padding: 12px 22px;
+  box-shadow: 0 8px 18px rgba(125, 31, 46, 0.22);
+}
+
+/*
+ * Scroll reveal (see landing.ts). The section element itself never moves, only its content,
+ * so anchor jumps still land exactly below the sticky header.
+ */
+.bt-reveal > * > * {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bt-reveal > * > :nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.bt-reveal > * > :nth-child(n + 3) {
+  transition-delay: 0.2s;
+}
+
+.bt-reveal.bt-revealed > * > * {
+  opacity: 1;
+  transform: none;
 }
 
 @keyframes bt-dash {

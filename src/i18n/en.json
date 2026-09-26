@@ -155,6 +155,7 @@
     "7606255574538646425": "Trusted by",
     "7690112611546087475": "Companies that already {$START_TAG_SPAN}choose BerryTrace{$CLOSE_TAG_SPAN}",
     "meta.title": "BerryTrace — IQF berries from Ukraine for B2B",
-    "meta.description": "Verified Ukrainian IQF berry producers, transparent control of every batch — from field to warehouse — and minimal paperwork."
+    "meta.description": "Verified Ukrainian IQF berry producers, transparent control of every batch — from field to warehouse — and minimal paperwork.",
+    "header.menu": "Menu"
   }
 }

@@ -3,10 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.html',
-  styles: `
-    :host {
-      display: block;
-    }
-  `,
+  styleUrl: './hero.css',
 })
 export class Hero {}

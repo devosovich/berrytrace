@@ -3,10 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-audience',
   templateUrl: './audience.html',
-  styles: `
-    :host {
-      display: block;
-    }
-  `,
+  styleUrl: './audience.css',
 })
 export class Audience {}

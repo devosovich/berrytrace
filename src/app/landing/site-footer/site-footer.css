@@ -1,0 +1,145 @@
+:host {
+  display: block;
+}
+
+.footer {
+  background: #FCF6F7;
+  border-top: 1px solid #F1E3E6;
+  padding: 80px var(--bt-gutter) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.tagline {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #5F5B59;
+  max-width: 320px;
+}
+
+.brand-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.column-title {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6B6563;
+  margin-bottom: 6px;
+}
+
+.link {
+  font-size: 15px;
+  color: #3A3A3A;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: #3A3A3A;
+}
+
+.contact-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid #F1E3E6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bottom {
+  position: relative;
+  z-index: 1;
+  margin-top: 64px;
+  border-top: 1px solid #F1E3E6;
+  padding: 24px 0 28px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: #8A8482;
+}
+
+.legal {
+  display: flex;
+  gap: 28px;
+}
+
+@media (max-width: 1024px) {
+  .footer {
+    padding-top: 64px;
+  }
+
+  .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 32px;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+
+  .tagline {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding-top: 48px;
+  }
+
+  .columns {
+    gap: 32px 20px;
+  }
+
+  .brand-actions {
+    flex-wrap: wrap;
+  }
+
+  /* Contacts hold long e-mail/phone lines, so give them the full width. */
+  .column:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .legal {
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+}

@@ -1,0 +1,263 @@
+:host {
+  display: block;
+}
+
+.process {
+  padding: 100px var(--bt-gutter) 110px;
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  margin-bottom: 52px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 760px;
+}
+
+.title {
+  font-size: 52px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  margin: 0;
+  color: #1F1F1F;
+}
+
+.lead {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #5F5B59;
+}
+
+.note {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: #FBEEF0;
+  border-radius: 20px;
+  padding: 24px 28px;
+  max-width: 420px;
+  flex-shrink: 0;
+}
+
+.note-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(163,38,57,0.08);
+}
+
+.note-body {
+  padding-left: 22px;
+  border-left: 1px solid #EBCFD5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.note-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1F1F1F;
+}
+
+.note-text {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #5F5B59;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.step {
+  position: relative;
+}
+
+.step-connector {
+  position: absolute;
+  right: -24px;
+  top: 54px;
+  z-index: 2;
+}
+
+.card {
+  height: 100%;
+  background: #FFFFFF;
+  border: 1px solid #F1E9EA;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 2px rgba(58,58,58,0.04), 0 12px 30px rgba(163,38,57,0.06);
+}
+
+.card-top {
+  padding: 26px 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-number {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #F2C3CC;
+}
+
+.card-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #FBEEF0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-body {
+  padding: 22px 22px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.card-title {
+  font-size: 18px;
+  line-height: 1.28;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #1F1F1F;
+  min-height: 46px;
+}
+
+.card-text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #6B6563;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-para {
+  margin: 0;
+}
+
+.card-media {
+  margin-top: auto;
+  padding-top: 24px;
+  position: relative;
+}
+
+.card-img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 24px;
+  height: 48px;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0) 100%);
+}
+
+@media (max-width: 1024px) {
+  .process {
+    padding-block: 72px 80px;
+  }
+
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .title {
+    font-size: 42px;
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  /* Cards become a horizontal swipe row that bleeds to the screen edges. */
+  .steps {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 38%;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-inline: calc(-1 * var(--bt-gutter));
+    padding: 4px var(--bt-gutter) 20px;
+    scroll-padding-inline: var(--bt-gutter);
+  }
+
+  .steps::-webkit-scrollbar {
+    display: none;
+  }
+
+  .steps > * {
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .process {
+    padding-block: 56px 60px;
+  }
+
+  .head {
+    margin-bottom: 28px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .lead {
+    font-size: 16px;
+  }
+
+  .note {
+    max-width: none;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .note-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .note-body {
+    padding-left: 16px;
+  }
+
+  .steps {
+    grid-auto-columns: 78%;
+  }
+}

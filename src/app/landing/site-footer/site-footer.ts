@@ -8,10 +8,6 @@ import { Logo } from '../logo/logo';
   selector: 'app-site-footer',
   imports: [Logo, LanguageSwitcher, RouterLink],
   templateUrl: './site-footer.html',
-  styles: `
-    :host {
-      display: block;
-    }
-  `,
+  styleUrl: './site-footer.css',
 })
 export class SiteFooter {}

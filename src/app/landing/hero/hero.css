@@ -1,0 +1,271 @@
+:host {
+  display: block;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr);
+  align-items: center;
+  gap: 64px;
+  padding: 88px var(--bt-gutter) 96px;
+  border-bottom: 1px solid #efeae8;
+  background:
+    radial-gradient(1200px 500px at 85% 20%, #fcf1f3 0%, rgba(253, 253, 252, 0) 60%),
+    #fdfdfc;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 10px;
+  background: #fbeef0;
+  border-radius: 999px;
+  padding: 7px 14px 7px 8px;
+  margin-bottom: 28px;
+}
+
+.pulse-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bt-accent);
+  animation: bt-pulse 1.8s ease-out infinite;
+}
+
+.eyebrow .pulse-dot {
+  margin-left: 4px;
+}
+
+.eyebrow-text {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7d1f2e;
+}
+
+.title {
+  /* 62px on desktop, scaling down to 34px on phones. */
+  font-size: clamp(34px, 3.6vw + 12px, 62px);
+  line-height: 1.04;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  margin: 0 0 26px;
+  color: #1f1f1f;
+}
+
+.lead {
+  font-size: 19px;
+  line-height: 1.6;
+  color: #5f5b59;
+  margin: 0 0 36px;
+  max-width: 580px;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  padding-top: 26px;
+  border-top: 1px solid #f1e9ea;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3a3a3a;
+}
+
+.check {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fbeef0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map {
+  position: relative;
+  min-width: 0;
+  height: 600px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #fbfafa;
+  border: 1px solid #f1e9ea;
+  box-shadow: 0 30px 60px rgba(125, 31, 46, 0.12);
+}
+
+.map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Floating white pills on top of the map. */
+.chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  box-shadow: 0 18px 40px rgba(58, 30, 36, 0.16);
+}
+
+.map-label {
+  left: 20px;
+  top: 20px;
+  gap: 8px;
+  padding: 10px 16px;
+}
+
+.map-label-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1f1f1f;
+}
+
+.legend {
+  left: 20px;
+  bottom: 20px;
+  gap: 16px;
+  padding: 10px 18px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #3a3a3a;
+}
+
+.cold-chain {
+  right: 20px;
+  bottom: 20px;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  animation: bt-float 6s ease-in-out infinite;
+}
+
+.cold-chain-icon {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #fbeef0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cold-chain-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.cold-chain-sub {
+  font-size: 12px;
+  color: #8a8482;
+}
+
+/* Tablet: text on top, map below at full width. */
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+    padding-block: 64px 72px;
+  }
+
+  .map {
+    height: 520px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    gap: 36px;
+    padding-block: 36px 48px;
+  }
+
+  .eyebrow {
+    margin-bottom: 20px;
+  }
+
+  .title {
+    margin-bottom: 18px;
+  }
+
+  .lead {
+    font-size: 17px;
+    margin-bottom: 28px;
+  }
+
+  .cta {
+    margin-bottom: 28px;
+  }
+
+  .cta .bt-btn {
+    flex: 1;
+  }
+
+  .badges {
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 20px;
+  }
+
+  .map {
+    height: 440px;
+    border-radius: 22px;
+  }
+
+  .map-label {
+    left: 12px;
+    top: 12px;
+  }
+
+  /* Legend spans the bottom edge; the cold-chain card sits above it. */
+  .legend {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    justify-content: center;
+  }
+
+  .cold-chain {
+    right: 12px;
+    bottom: 68px;
+    padding: 10px 14px;
+  }
+
+  .cold-chain-icon {
+    width: 32px;
+    height: 32px;
+  }
+}

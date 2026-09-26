@@ -1,4 +1,10 @@
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  ElementRef,
+  afterNextRender,
+  inject,
+} from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 import { Audience } from './audience/audience';
@@ -12,6 +18,11 @@ import { Testimonials } from './testimonials/testimonials';
 import { Trust } from './trust/trust';
 import { TrustedBy } from './trusted-by/trusted-by';
 
+/**
+ * Sections below the hero are prerendered as HTML like the rest of the page, but their code is only
+ * downloaded and hydrated once they scroll into view (`@defer (hydrate on viewport)`).
+ * `data-reveal` marks the sections that fade in on scroll (see `.bt-reveal` in styles.css).
+ */
 @Component({
   selector: 'app-landing',
   imports: [SiteHeader, Hero, TrustedBy, Audience, Geography, Process, Testimonials, Trust, Cta, SiteFooter],
@@ -19,15 +30,31 @@ import { TrustedBy } from './trusted-by/trusted-by';
     <app-site-header />
     <main>
       <app-hero />
-      <app-trusted-by />
-      <app-audience />
-      <app-geography />
-      <app-process />
-      <app-testimonials />
-      <app-trust />
-      <app-cta />
+      @defer (hydrate on viewport) {
+        <app-trusted-by data-reveal />
+      }
+      @defer (hydrate on viewport) {
+        <app-audience data-reveal />
+      }
+      @defer (hydrate on viewport) {
+        <app-geography data-reveal />
+      }
+      @defer (hydrate on viewport) {
+        <app-process data-reveal />
+      }
+      @defer (hydrate on viewport) {
+        <app-testimonials data-reveal />
+      }
+      @defer (hydrate on viewport) {
+        <app-trust data-reveal />
+      }
+      @defer (hydrate on viewport) {
+        <app-cta data-reveal />
+      }
     </main>
-    <app-site-footer />
+    @defer (hydrate on viewport) {
+      <app-site-footer data-reveal />
+    }
   `,
   styles: `
     :host {
@@ -45,5 +72,46 @@ export default class Landing {
       name: 'description',
       content: $localize`:@@meta.description:Перевірені українські виробники IQF-ягід, прозорий контроль кожної партії — від поля до складу — та мінімум бюрократії.`,
     });
+
+    const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+    const destroyRef = inject(DestroyRef);
+    // Browser only: the prerendered HTML always shows every section fully.
+    afterNextRender(() => {
+      const observer = revealOnScroll(host.querySelectorAll<HTMLElement>('[data-reveal]'));
+      destroyRef.onDestroy(() => observer?.disconnect());
+    });
   }
+}
+
+/**
+ * Hides sections that start below the fold and fades them in as they scroll into view. Sections
+ * already on screen are left untouched so nothing flickers after the page loads.
+ */
+function revealOnScroll(elements: NodeListOf<HTMLElement>): IntersectionObserver | undefined {
+  if (
+    typeof IntersectionObserver === 'undefined' ||
+    matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    return undefined;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('bt-revealed');
+          observer.unobserve(entry.target);
+        }
+      }
+    },
+    { rootMargin: '0px 0px -12% 0px' },
+  );
+
+  for (const element of elements) {
+    if (element.getBoundingClientRect().top > innerHeight) {
+      element.classList.add('bt-reveal');
+      observer.observe(element);
+    }
+  }
+  return observer;
 }

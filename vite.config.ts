@@ -1,7 +1,25 @@
 /// <reference types="vitest" />
 
-import { defineConfig } from 'vite';
+import { Plugin, defineConfig } from 'vite';
 import analog from '@analogjs/platform';
+
+/**
+ * Analog's production build defines `ngServerMode` from the top-level `build.ssr`, which is unset
+ * because the server bundle is built as a separate `ssr` environment. Both bundles therefore get
+ * `ngServerMode = false`, which strips Angular's server-only code paths — e.g. `@defer` blocks
+ * with hydrate triggers render empty in the prerendered HTML. Set it correctly per environment.
+ */
+function ngServerModePerEnvironment(): Plugin {
+  return {
+    name: 'ng-server-mode-per-environment',
+    configEnvironment(name, _config, env) {
+      if (env.command === 'build' && name === 'ssr') {
+        return { define: { ngServerMode: 'true' } };
+      }
+      return undefined;
+    },
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -29,5 +47,6 @@ export default defineConfig(({ mode }) => ({
         locales: ['uk', 'en', 'pl'],
       },
     }),
+    ngServerModePerEnvironment(),
   ],
 }));

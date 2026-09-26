@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { Component, ElementRef, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { LanguageSwitcher } from '../language-switcher/language-switcher';
@@ -8,10 +9,34 @@ import { Logo } from '../logo/logo';
   selector: 'app-site-header',
   imports: [Logo, LanguageSwitcher, RouterLink],
   templateUrl: './site-header.html',
-  styles: `
-    :host {
-      display: block;
-    }
-  `,
+  styleUrl: './site-header.css',
+  host: {
+    '(document:keydown.escape)': 'closeMenu()',
+    '(document:click)': 'closeOnOutsideClick($event)',
+  },
 })
-export class SiteHeader {}
+export class SiteHeader {
+  /** Burger menu state; the menu is only visible below the desktop breakpoint (see site-header.css). */
+  protected readonly menuOpen = signal(false);
+
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  constructor() {
+    // The header is sticky, so stop anchor jumps (#process, #trust, …) just below it.
+    inject(ViewportScroller).setOffset(() => [0, this.host.nativeElement.offsetHeight]);
+  }
+
+  protected toggleMenu(): void {
+    this.menuOpen.update((open) => !open);
+  }
+
+  protected closeMenu(): void {
+    this.menuOpen.set(false);
+  }
+
+  protected closeOnOutsideClick(event: MouseEvent): void {
+    if (this.menuOpen() && !this.host.nativeElement.contains(event.target as Node)) {
+      this.closeMenu();
+    }
+  }
+}

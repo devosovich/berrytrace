@@ -4,6 +4,7 @@ import {
   provideClientHydration,
   withEventReplay,
   withI18nSupport,
+  withIncrementalHydration,
 } from '@angular/platform-browser';
 import { withInMemoryScrolling } from '@angular/router';
 import { provideFileRouter, requestContextInterceptor } from '@analogjs/router';
@@ -21,7 +22,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
     ),
     provideHttpClient(withFetch(), withInterceptors([requestContextInterceptor])),
-    provideClientHydration(withEventReplay(), withI18nSupport()),
+    provideClientHydration(withEventReplay(), withI18nSupport(), withIncrementalHydration()),
     // `defaultLocale` and `locales` come from the `i18n` option in vite.config.ts.
     provideI18n({
       loader: async (locale) => {

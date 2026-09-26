@@ -1,0 +1,156 @@
+/* Stays pinned to the top of the viewport while the page scrolls. */
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px var(--bt-gutter);
+  border-bottom: 1px solid #efeae8;
+  background: #fdfdfc;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #3a3a3a;
+}
+
+.nav a {
+  color: inherit;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Burger button and the in-menu order button only exist below the desktop breakpoint. */
+.burger,
+.nav-order {
+  display: none;
+}
+
+/* Below this width the four section links (longest in Ukrainian) no longer fit on one line,
+   so they move into a dropdown panel opened by the burger button. */
+@media (max-width: 1320px) {
+  .header {
+    position: relative;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px var(--bt-gutter) 24px;
+    background: #fdfdfc;
+    border-bottom: 1px solid #efeae8;
+    box-shadow: 0 24px 40px rgba(58, 30, 36, 0.12);
+    font-size: 17px;
+  }
+
+  .menu-open .nav {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 16px 0;
+    border-bottom: 1px solid #f1e9ea;
+    white-space: normal;
+  }
+
+  .burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    /* Full 44px tap target without making the header taller than the language switcher. */
+    margin: -6px -10px -6px 0;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #1f1f1f;
+  }
+
+  /* Three lines drawn from one span and its pseudo-elements; they fold into an X when open. */
+  .burger-lines,
+  .burger-lines::before,
+  .burger-lines::after {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background: currentColor;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .burger-lines {
+    position: relative;
+  }
+
+  .burger-lines::before,
+  .burger-lines::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+
+  .burger-lines::before {
+    top: -7px;
+  }
+
+  .burger-lines::after {
+    top: 7px;
+  }
+
+  .menu-open .burger-lines {
+    background-color: transparent;
+  }
+
+  .menu-open .burger-lines::before {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-open .burger-lines::after {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+/* Phones: logo, language switcher and burger; the order button moves into the menu. */
+@media (max-width: 640px) {
+  .header {
+    padding-block: 14px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .order {
+    display: none;
+  }
+
+  .nav-order {
+    display: flex;
+    margin-top: 24px;
+  }
+}
