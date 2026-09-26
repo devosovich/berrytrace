@@ -97,18 +97,24 @@
 }
 
 .logo-a {
+  width: auto;
+  height: auto;
   max-width: 44px;
   max-height: 26px;
   display: block;
 }
 
 .logo-b {
+  width: auto;
+  height: auto;
   max-width: 46px;
   max-height: 20px;
   display: block;
 }
 
 .logo-c {
+  width: auto;
+  height: auto;
   max-width: 46px;
   max-height: 30px;
   display: block;

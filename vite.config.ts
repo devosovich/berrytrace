@@ -21,6 +21,27 @@ function ngServerModePerEnvironment(): Plugin {
   };
 }
 
+/**
+ * Inlines the global stylesheet (styles.css + @font-face rules, ~2 KB gzipped) into index.html so
+ * the first paint does not wait for a separate render-blocking CSS request.
+ */
+function inlineGlobalCss(): Plugin {
+  return {
+    name: 'inline-global-css',
+    apply: 'build',
+    enforce: 'post',
+    transformIndexHtml(html, ctx) {
+      if (!ctx.bundle) return html;
+      return html.replace(/<link rel="stylesheet"[^>]*href="([^"]+\.css)"[^>]*>/g, (tag, href: string) => {
+        const asset = Object.values(ctx.bundle!).find(
+          (chunk) => chunk.type === 'asset' && href.endsWith('/' + chunk.fileName),
+        );
+        return asset && asset.type === 'asset' ? `<style>${asset.source}</style>` : tag;
+      });
+    },
+  };
+}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // Served from https://devosovich.github.io/berrytrace/. Use '/' for a custom domain.
@@ -48,5 +69,6 @@ export default defineConfig(({ mode }) => ({
       },
     }),
     ngServerModePerEnvironment(),
+    inlineGlobalCss(),
   ],
 }));
