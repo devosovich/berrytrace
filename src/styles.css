@@ -1,0 +1,76 @@
+/* Brand tokens (previously the design tool's `accent` / `accentGreen` props). */
+:root {
+  --bt-accent: #a32639;
+  --bt-accent-dark: #7d1f2e;
+  --bt-accent-green: #4c7a3d;
+  --bt-bg: #fdfdfc;
+  --bt-text: #3a3a3a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bt-bg);
+  color: var(--bt-text);
+  font-family: 'Archivo', Helvetica, sans-serif;
+}
+
+a {
+  color: var(--bt-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--bt-accent-dark);
+}
+
+@keyframes bt-dash {
+  to {
+    stroke-dashoffset: -320;
+  }
+}
+
+@keyframes bt-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes bt-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(163, 38, 57, 0.45);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 8px rgba(163, 38, 57, 0);
+  }
+}
+
+@keyframes bt-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
