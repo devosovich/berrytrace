@@ -110,6 +110,11 @@
   border-radius: 12px;
 }
 
+/* The plated dessert sits near the bottom of this photo; keep it in the short crop. */
+.card-img--horeca {
+  object-position: 50% 82%;
+}
+
 .card-icon {
   position: absolute;
   left: 14px;

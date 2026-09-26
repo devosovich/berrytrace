@@ -84,9 +84,10 @@
 
 .art-img {
   position: absolute;
-  left: -80px;
+  /* The photo has generous white margins (blended away by multiply), so it is drawn larger. */
+  left: -50px;
   bottom: -110px;
-  width: 320px;
+  width: 360px;
   height: auto;
   mix-blend-mode: multiply;
 }
@@ -133,6 +134,11 @@
   height: 180px;
   object-fit: cover;
   display: block;
+}
+
+/* The inspector stands at the right edge of this photo; keep her in frame on narrower cards. */
+.card-img--verified {
+  object-position: 85% 50%;
 }
 
 .card-badge {
