@@ -28,6 +28,11 @@ jobs:
       - run: npm ci
 
       - run: npm run build
+        env:
+          # Repository variables (Settings → Secrets and variables → Actions → Variables); see src/app/site-config.ts.
+          VITE_SUBSCRIBE_ENDPOINT: ${{ vars.SUBSCRIBE_ENDPOINT }}
+          VITE_WHATSAPP_NUMBER: ${{ vars.WHATSAPP_NUMBER }}
+          VITE_PRIVACY_POLICY_URL: ${{ vars.PRIVACY_POLICY_URL }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

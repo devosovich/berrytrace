@@ -1,0 +1,176 @@
+<app-site-header />
+<main class="main">
+  <section class="hero">
+    <div class="copy">
+      <div class="badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span class="badge-text" i18n>Аудит виробників</span>
+      </div>
+      <h1 class="title" i18n="@@audit.title">Перевірте виробника за вашим технічним завданням</h1>
+      <p class="lead" i18n="@@audit.lead">Замовте незалежний аудит виробника IQF-ягоди: опишіть, що саме має перевірити аудитор, — і отримайте детальний звіт у своєму кабінеті на платформі.</p>
+      <div class="cta">
+        <a class="bt-btn bt-btn--md" [routerLink]="order">
+          <ng-container i18n="@@audit.order">Замовити аудит</ng-container>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#FDFDFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg>
+        </a>
+        <a class="outline-btn" routerLink="." fragment="how" i18n="@@audit.how.eyebrow">Як це працює</a>
+      </div>
+    </div>
+
+    <div class="visual">
+      <img class="visual-img" src="images/audit/inspector.webp" srcset="images/audit/inspector-640.webp 640w, images/audit/inspector.webp 1024w" sizes="(max-width: 1024px) calc(100vw - 80px), 560px" width="1024" height="687" alt="Інспектор перевіряє заморожену малину в рукавичках" i18n-alt="@@audit.img.inspector" decoding="async" fetchpriority="high" />
+      <app-audit-brief class="visual-brief" />
+    </div>
+  </section>
+
+  <section id="how" class="section">
+    <div class="section-head">
+      <div class="bt-eyebrow">
+        <div class="bt-eyebrow-line"></div>
+        <div class="bt-eyebrow-text" i18n="@@audit.how.eyebrow">Як це працює</div>
+      </div>
+      <h2 class="section-title" i18n="@@audit.how.title">Від технічного завдання до звіту — чотири кроки</h2>
+    </div>
+    <ol class="steps">
+      @for (step of steps; track $index) {
+        <li class="step">
+          <div class="step-number" aria-hidden="true">{{ ($index + 1).toString().padStart(2, '0') }}</div>
+          <h3 class="step-title">{{ step.title }}</h3>
+          <p class="step-text">{{ step.text }}</p>
+        </li>
+      }
+    </ol>
+  </section>
+
+  <section class="section section--tinted">
+    <div class="section-head section-head--split">
+      <div class="section-head">
+        <div class="bt-eyebrow">
+          <div class="bt-eyebrow-line"></div>
+          <div class="bt-eyebrow-text" i18n="@@audit.include.eyebrow">Що можна включити в ТЗ</div>
+        </div>
+        <h2 class="section-title" i18n="@@audit.include.title">Ви вирішуєте, що саме перевіряє аудитор</h2>
+      </div>
+      <p class="section-lead" i18n="@@audit.include.lead">Оберіть готові пункти або опишіть власні вимоги — аудитор працює строго за вашим завданням.</p>
+    </div>
+    <div class="includes">
+      <div class="include">
+        <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="11" rx="1.5"></rect><path d="M7 9 V5.5 H17 V9"></path><path d="M9 14 H15"></path></svg></span>
+        <div class="include-text">
+          <h3 class="include-title" i18n="@@audit.include.capacity.title">Потужності та обсяги</h3>
+          <p class="include-body" i18n="@@audit.include.capacity.text">Реальні виробничі потужності, обсяги заморозки і доступні залишки на складі.</p>
+        </div>
+      </div>
+      <div class="include">
+        <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 V21"></path><path d="M4.2 7.5 L19.8 16.5"></path><path d="M19.8 7.5 L4.2 16.5"></path><path d="M9.5 4.5 L12 7 L14.5 4.5"></path><path d="M9.5 19.5 L12 17 L14.5 19.5"></path></svg></span>
+        <div class="include-text">
+          <h3 class="include-title" i18n="@@audit.include.cold.title">Холодний ланцюг</h3>
+          <p class="include-body" i18n="@@audit.include.cold.text">Шокова заморозка, температурний режим зберігання, журнали температур і стан камер.</p>
+        </div>
+      </div>
+      <div class="include">
+        <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5 H14 L18 7.5 V20.5 H7 Z"></path><path d="M14 3.5 V7.5 H18"></path><path d="M10 12 H15"></path><path d="M10 16 H15"></path></svg></span>
+        <div class="include-text">
+          <h3 class="include-title" i18n="@@audit.include.docs.title">Сертифікати й документи</h3>
+          <p class="include-body" i18n="@@audit.include.docs.text">Наявність і чинність сертифікатів, дозволів, декларацій та внутрішніх процедур якості.</p>
+        </div>
+      </div>
+      <div class="include">
+        <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6" height="6" rx="1"></rect><rect x="14" y="4" width="6" height="6" rx="1"></rect><rect x="4" y="14" width="6" height="6" rx="1"></rect><path d="M14 14 H16 V16"></path><path d="M20 14 V20 H14"></path></svg></span>
+        <div class="include-text">
+          <h3 class="include-title" i18n="@@audit.include.trace.title">Простежуваність партій</h3>
+          <p class="include-body" i18n="@@audit.include.trace.text">Маркування, облік і зв'язок конкретної партії з полем, датою збору та заморозки.</p>
+        </div>
+      </div>
+      <div class="include">
+        <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5 V9.5 L4.5 18 A2 2 0 0 0 6.3 21 H17.7 A2 2 0 0 0 19.5 18 L15 9.5 V3.5"></path><path d="M8 3.5 H16"></path><path d="M7 15 H17"></path></svg></span>
+        <div class="include-text">
+          <h3 class="include-title" i18n="@@audit.include.lab.title">Відбір проб і аналізи</h3>
+          <p class="include-body" i18n="@@audit.include.lab.text">Відбір зразків з вашої партії та передача в лабораторію на показники, які ви вкажете.</p>
+        </div>
+      </div>
+      <div class="include">
+        <span class="include-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6.5" width="17" height="13" rx="2"></rect><circle cx="12" cy="13" r="3.5"></circle><path d="M8.5 6.5 L10 4 H14 L15.5 6.5"></path></svg></span>
+        <div class="include-text">
+          <h3 class="include-title" i18n="@@audit.include.media.title">Фото- та відеозвіт</h3>
+          <p class="include-body" i18n="@@audit.include.media.text">Фіксація цехів, складу, пакування й конкретної партії — з датою та геолокацією.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section report">
+    <div class="report-copy">
+      <div class="section-head">
+        <div class="bt-eyebrow">
+          <div class="bt-eyebrow-line"></div>
+          <div class="bt-eyebrow-text" i18n="@@audit.report.eyebrow">Звіт у кабінеті</div>
+        </div>
+        <h2 class="section-title" i18n="@@audit.report.title">Результат — у вашому кабінеті на платформі</h2>
+      </div>
+      <ul class="points">
+        @for (point of reportPoints; track $index) {
+          <li class="point">
+            <span class="point-check" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7.5"></path></svg></span>
+            {{ point }}
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Illustration of the report screen on the platform, with sample data. -->
+    <figure class="window" aria-label="Приклад звіту аудиту в кабінеті" i18n-aria-label="@@audit.report.sampleLabel">
+      <div class="window-bar">
+        <span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="window-title" i18n="@@audit.report.windowTitle">Кабінет · Аудити</span>
+        <span class="window-spacer"></span>
+      </div>
+      <div class="window-body">
+        <div class="report-head">
+          <div class="report-meta">
+            <div class="report-number" i18n="@@audit.report.number">Аудит № 1 · 27.09.2026</div>
+            <div class="report-producer" i18n="@@audit.report.producer">Berry Company 1</div>
+            <div class="report-batch" i18n="@@audit.report.batch">IQF-малина · партія № 1</div>
+          </div>
+          <span class="ready"><span class="ready-dot" aria-hidden="true"></span><ng-container i18n="@@audit.report.ready">Звіт готовий</ng-container></span>
+        </div>
+        <div class="photos">
+          <img src="images/audit/sorting-line.webp" srcset="images/audit/sorting-line-640.webp 640w, images/audit/sorting-line.webp 1024w" sizes="(max-width: 640px) 30vw, 200px" width="1024" height="572" alt="Інспектор на лінії сортування ягід" i18n-alt="@@audit.img.sorting" loading="lazy" decoding="async" />
+          <img src="images/audit/cold-storage.webp" srcset="images/audit/cold-storage-640.webp 640w, images/audit/cold-storage.webp 1024w" sizes="(max-width: 640px) 30vw, 200px" width="1024" height="572" alt="Палети із замороженою ягодою на складі" i18n-alt="@@audit.img.storage" loading="lazy" decoding="async" />
+          <img src="images/audit/lab-sample.webp" srcset="images/audit/lab-sample-640.webp 640w, images/audit/lab-sample.webp 1024w" sizes="(max-width: 640px) 30vw, 200px" width="1024" height="572" alt="Лабораторний аналіз проби" i18n-alt="@@audit.img.lab" loading="lazy" decoding="async" />
+        </div>
+        <div class="items">
+          <div class="items-label" i18n="@@audit.report.items">Пункти ТЗ</div>
+          @for (item of reportItems; track item.title) {
+            <div class="item">
+              <span class="item-title">{{ item.title }}</span>
+              <span class="status" [attr.data-status]="item.status">{{ statusLabels[item.status] }}</span>
+            </div>
+          }
+        </div>
+        <!-- Static preview of the platform's buttons, not controls on this page. -->
+        <div class="window-actions" aria-hidden="true">
+          <span class="fake-btn fake-btn--primary">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#FDFDFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 V15"></path><path d="M7 10 L12 15 L17 10"></path><path d="M5 20 H19"></path></svg>
+            <ng-container i18n="@@audit.report.download">Завантажити PDF</ng-container>
+          </span>
+          <span class="fake-btn fake-btn--outline" i18n="@@audit.report.share">Поділитися з командою</span>
+        </div>
+      </div>
+    </figure>
+  </section>
+
+  <section class="final">
+    <div class="final-card">
+      <div class="final-copy">
+        <h2 class="final-title" i18n="@@audit.final.title">Хочете перевірити виробника перед закупівлею?</h2>
+        <p class="final-text" i18n="@@audit.final.text">Складіть технічне завдання — ми підберемо аудитора й повідомимо терміни та вартість.</p>
+      </div>
+      <a class="final-btn" [routerLink]="order">
+        <ng-container i18n="@@audit.order">Замовити аудит</ng-container>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg>
+      </a>
+    </div>
+  </section>
+</main>
+<app-site-footer />

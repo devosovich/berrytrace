@@ -1,0 +1,30 @@
+<header class="header" [class.menu-open]="menuOpen()">
+    <a class="home" [routerLink]="home" aria-label="BerryTrace — на головну" i18n-aria-label="@@header.home"><app-logo /></a>
+    <nav class="nav" id="site-nav">
+      <a [routerLink]="home" fragment="audience" (click)="closeMenu()" i18n>Для кого наш сервіс</a>
+      <a [routerLink]="home" fragment="process" (click)="closeMenu()" i18n>Як відбувається співпраця</a>
+      <a [routerLink]="home" fragment="testimonials" (click)="closeMenu()" i18n>Відгуки</a>
+      <a [routerLink]="home" fragment="trust" (click)="closeMenu()" i18n>Чому нам довіряють</a>
+      <a [routerLink]="audit" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="closeMenu()" i18n>Аудит виробників</a>
+      <a class="bt-btn nav-order" [routerLink]="order" (click)="closeMenu()"><ng-container i18n>Замовити ягоду</ng-container>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#FDFDFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg>
+        </a>
+    </nav>
+    <div class="actions">
+      <app-language-switcher />
+      <a class="bt-btn bt-btn--sm order" [routerLink]="order"><ng-container i18n>Замовити ягоду</ng-container>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#FDFDFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg>
+        </a>
+      <button
+        type="button"
+        class="burger"
+        aria-controls="site-nav"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Меню"
+        i18n-aria-label="@@header.menu"
+        (click)="toggleMenu()"
+      >
+        <span class="burger-lines"></span>
+      </button>
+    </div>
+  </header>

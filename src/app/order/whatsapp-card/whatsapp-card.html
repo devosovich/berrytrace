@@ -1,0 +1,29 @@
+<p class="note" i18n="@@order.whatsapp.note">Потрібна ягода вже зараз? Напишіть нам!</p>
+<div class="card">
+  <div class="head">
+    <span class="avatar"><app-logo [wordmark]="false" [height]="27" /></span>
+    <div class="head-text">
+      <div class="name">BerryTrace</div>
+      <div class="presence"><span class="presence-dot" aria-hidden="true"></span><ng-container i18n="@@order.whatsapp.replyTime">Зазвичай відповідаємо протягом години</ng-container></div>
+    </div>
+    <svg class="head-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 19.5 L5.6 15.9 A8 8 0 1 1 8.3 18.5 Z"></path><path d="M9.2 8.6 C9.2 11.6 12.2 14.6 15.2 14.6 L15.8 13.2 L14.2 12.4 L13.4 13.1 C12.3 12.6 11.3 11.6 10.8 10.5 L11.5 9.7 L10.7 8.1 Z"></path></svg>
+  </div>
+  <div class="body">
+    <div class="bubble">
+      <ng-container i18n="@@order.whatsapp.greeting">Вітаємо! Поки платформа в розробці, приймаємо замовлення тут. Напишіть, яка ягода, обсяг і куди доставити.</ng-container>
+      <div class="time" aria-hidden="true">09:41</div>
+    </div>
+    <ul class="chips">
+      @for (reply of quickReplies; track reply.link) {
+        <li><a class="chip" [href]="reply.link" target="_blank" rel="noopener">{{ reply.label }}</a></li>
+      }
+    </ul>
+  </div>
+  <div class="foot">
+    <a class="cta" [href]="chatLink" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 19.5 L5.6 15.9 A8 8 0 1 1 8.3 18.5 Z"></path><path d="M9.2 8.6 C9.2 11.6 12.2 14.6 15.2 14.6 L15.8 13.2 L14.2 12.4 L13.4 13.1 C12.3 12.6 11.3 11.6 10.8 10.5 L11.5 9.7 L10.7 8.1 Z"></path></svg>
+      <ng-container i18n="@@order.whatsapp.cta">Написати у WhatsApp</ng-container>
+    </a>
+    <div class="phone">{{ phone }}</div>
+  </div>
+</div>

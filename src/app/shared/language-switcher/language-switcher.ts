@@ -1,7 +1,6 @@
 import { Component, input } from '@angular/core';
-import { injectLocale } from '@analogjs/router/tokens';
 
-import { DEFAULT_LOCALE, LOCALES, Locale, isLocale, localeUrl } from '../../i18n';
+import { LOCALES, Locale, injectCurrentLocale, localeUrl, pageFromPath } from '../../i18n';
 
 const LABELS: Record<Locale, string> = { uk: 'UA', en: 'EN', pl: 'PL' };
 
@@ -62,13 +61,13 @@ export class LanguageSwitcher {
   protected readonly locales = LOCALES;
   protected readonly labels = LABELS;
 
-  private readonly locale = injectLocale();
-  protected readonly current: Locale = isLocale(this.locale) ? this.locale : DEFAULT_LOCALE;
+  protected readonly current = injectCurrentLocale();
 
   protected select(locale: Locale): void {
     if (locale !== this.current) {
-      // Full page load so every $localize message is rendered with the new translations.
-      window.location.href = localeUrl(locale) + window.location.hash;
+      // Same page in the other locale, as a full page load so every $localize message is
+      // rendered with the new translations.
+      window.location.href = localeUrl(locale, pageFromPath(window.location.pathname)) + window.location.hash;
     }
   }
 }

@@ -1,0 +1,22 @@
+import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+import { CookieConsent } from '../../cookie-consent/cookie-consent';
+import { injectCurrentLocale, localeRoute } from '../../i18n';
+import { LanguageSwitcher } from '../language-switcher/language-switcher';
+import { Logo } from '../logo/logo';
+
+@Component({
+  selector: 'app-site-footer',
+  imports: [Logo, LanguageSwitcher, RouterLink],
+  templateUrl: './site-footer.html',
+  styleUrl: './site-footer.css',
+})
+export class SiteFooter {
+  protected readonly cookieConsent = inject(CookieConsent);
+
+  private readonly locale = injectCurrentLocale();
+  protected readonly home = localeRoute(this.locale);
+  protected readonly order = localeRoute(this.locale, 'order');
+  protected readonly audit = localeRoute(this.locale, 'audit');
+}

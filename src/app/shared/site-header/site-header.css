@@ -25,9 +25,20 @@
   color: #3a3a3a;
 }
 
-.nav a {
+.nav a:not(.bt-btn) {
   color: inherit;
   white-space: nowrap;
+}
+
+/* Current page (e.g. "Producer audits" on /audit). */
+.nav a.active {
+  color: var(--bt-accent);
+  font-weight: 600;
+}
+
+.home {
+  display: flex;
+  color: inherit;
 }
 
 .actions {
@@ -42,9 +53,20 @@
   display: none;
 }
 
-/* Below this width the four section links (longest in Ukrainian) no longer fit on one line,
-   so they move into a dropdown panel opened by the burger button. */
-@media (max-width: 1320px) {
+/* Five links (longest in Ukrainian, ~1450px of header) only fit with tighter spacing here. */
+@media (max-width: 1520px) {
+  .header {
+    padding-inline: min(48px, var(--bt-gutter));
+  }
+
+  .nav {
+    gap: 22px;
+  }
+}
+
+/* Below this width the section links no longer fit on one line, so they move into a dropdown
+   panel opened by the burger button. */
+@media (max-width: 1360px) {
   .header {
     position: relative;
   }
@@ -70,7 +92,7 @@
     display: flex;
   }
 
-  .nav a {
+  .nav a:not(.bt-btn) {
     padding: 16px 0;
     border-bottom: 1px solid #f1e9ea;
     white-space: normal;

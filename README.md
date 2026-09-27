@@ -22,6 +22,30 @@ The site is served from `https://devosovich.github.io/berrytrace/`. Every push t
 - Reference public files with relative paths (`images/...`, not `/images/...`) so they resolve against the base.
 - The dev server also runs under the base path: `http://localhost:5173/berrytrace/`.
 
+## Configuration
+
+Deployment-specific values are read from `VITE_*` environment variables at build time (`src/app/site-config.ts`). Locally, put them in a `.env` file; on GitHub Pages, add them as repository variables (`SUBSCRIBE_ENDPOINT`, `WHATSAPP_NUMBER`, `PRIVACY_POLICY_URL`), which the deploy workflow passes to the build.
+
+| Variable | Used for | Default |
+|---|---|---|
+| `VITE_SUBSCRIBE_ENDPOINT` | URL the `/order` form POSTs `{ "email", "locale" }` to (external service — the site is static) | empty: the form shows its error state |
+| `VITE_WHATSAPP_NUMBER` | WhatsApp links and number on `/order` | `+380 44 000 00 00` (placeholder) |
+| `VITE_PRIVACY_POLICY_URL` | Link in the cookie banner | empty: shown as plain text |
+
+## Cookie consent
+
+The banner (`src/app/cookie-consent/`) stores the choice in `localStorage` under `bt-cookie-consent` as `{ necessary, analytics, marketing, at, v }`. Raise `cookiePolicyVersion` in `site-config.ts` to ask everyone again. Load analytics or marketing code only through the consent service:
+
+```ts
+inject(CookieConsent).whenGranted('analytics', () => loadAnalytics());
+```
+
+Scripts outside Angular can listen for the `bt:cookie-consent` window event.
+
+## Tests
+
+`npx vitest run` (or `npm test` in watch mode) runs the specs in `src/**/*.spec.ts`.
+
 ## Localization
 
 Templates are written in Ukrainian (the source locale) and marked with `i18n` attributes. Translations are loaded at runtime by `provideI18n()` from `src/i18n/<locale>.json`; the locale comes from the URL prefix (`/pl`, `/uk`), and unprefixed URLs (`/`) use English (`defaultLocale: 'en'`). Ukrainian must stay first in the `locales` list in `vite.config.ts`, because Analog treats the first locale as the source.

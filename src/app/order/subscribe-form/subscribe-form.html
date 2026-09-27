@@ -1,0 +1,53 @@
+@if (status() !== 'success') {
+  <form class="card" novalidate (submit)="$event.preventDefault(); submit(website.value)">
+    <label for="bt-email" class="label" i18n="@@order.form.label">Ваш email</label>
+    <div class="row">
+      <input
+        #emailInput
+        id="bt-email"
+        class="input"
+        type="email"
+        name="email"
+        placeholder="name@company.com"
+        autocomplete="email"
+        inputmode="email"
+        required
+        [class.input--error]="status() === 'invalid'"
+        [attr.aria-invalid]="status() === 'invalid'"
+        [attr.aria-describedby]="status() === 'invalid' ? 'bt-email-error' : 'bt-email-hint'"
+        [value]="email()"
+        (input)="onInput(emailInput.value)"
+      />
+      <!-- Honeypot: hidden from people and assistive tech, see SubscribeForm.submit(). -->
+      <input #website class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <button type="submit" class="bt-btn submit" [disabled]="status() === 'loading'" [attr.aria-busy]="status() === 'loading'">
+        <ng-container i18n="@@order.form.submit">Підписатися</ng-container>
+        @if (status() === 'loading') {
+          <span class="spinner" aria-hidden="true"></span>
+        } @else {
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#FDFDFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg>
+        }
+      </button>
+    </div>
+    @if (status() === 'invalid') {
+      <div id="bt-email-error" class="message message--error" role="alert" i18n="@@order.form.invalid">Перевірте, будь ласка, адресу email.</div>
+    }
+    @if (status() === 'failed') {
+      <div class="message message--error" role="alert" i18n="@@order.form.failed">Не вдалося оформити підписку. Спробуйте ще раз трохи згодом або напишіть нам у WhatsApp.</div>
+    }
+    @if (status() === 'loading') {
+      <div class="visually-hidden" role="status" i18n="@@order.form.sending">Надсилаємо…</div>
+    }
+    <div id="bt-email-hint" class="hint" i18n="@@order.form.hint">Надішлемо один лист, коли платформа запрацює. Жодного спаму — відписатися можна будь-коли.</div>
+  </form>
+} @else {
+  <div #confirmation class="card card--success" role="status" tabindex="-1">
+    <span class="check" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--bt-accent-green);"><path d="M5 12.5 L10 17 L19 7.5"></path></svg>
+    </span>
+    <div class="success-text">
+      <div class="success-title" i18n="@@order.form.successTitle">Дякуємо! Ви в списку.</div>
+      <div class="success-body" i18n="@@order.form.successBody">Повідомимо на <span class="success-email">{{ subscribedEmail() }}</span>, щойно платформа запрацює.</div>
+    </div>
+  </div>
+}

@@ -100,6 +100,21 @@ a:hover {
   cursor: pointer;
 }
 
+/* Also used on links (e.g. "Order berries"); keep the text colour on hover. */
+a.bt-btn:hover {
+  color: var(--bt-bg);
+}
+
+.bt-btn:focus-visible {
+  outline: 3px solid rgba(163, 38, 57, 0.35);
+  outline-offset: 3px;
+}
+
+.bt-btn:disabled {
+  cursor: default;
+  opacity: 0.75;
+}
+
 .bt-btn--sm {
   gap: 10px;
   font-size: 15px;

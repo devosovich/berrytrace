@@ -1,0 +1,24 @@
+<app-site-header />
+<main class="main">
+  <section class="hero">
+    <div class="copy">
+      <a class="back" [routerLink]="home">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12 H5"></path><path d="M11 6 L5 12 L11 18"></path></svg>
+        <ng-container i18n="@@order.back">На головну</ng-container>
+      </a>
+      <div class="eyebrow">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span class="eyebrow-text" i18n="@@order.badge">Платформа в розробці</span>
+      </div>
+      <h1 class="title" i18n="@@order.title">Онлайн-замовлення ягоди скоро запрацює</h1>
+      <p class="lead" i18n="@@order.lead">Ми завершуємо роботу над платформою. Якщо бажаєте отримати повідомлення, коли вона запрацює, — підпишіться на нашу розсилку та залиште свій email.</p>
+      <app-subscribe-form />
+    </div>
+    <app-whatsapp-card />
+  </section>
+</main>
+<app-site-footer />
+
+<a class="whatsapp-float" [href]="chatLink" target="_blank" rel="noopener" aria-label="Написати у WhatsApp" i18n-aria-label="@@order.whatsapp.cta">
+  <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 19.5 L5.6 15.9 A8 8 0 1 1 8.3 18.5 Z"></path><path d="M9.2 8.6 C9.2 11.6 12.2 14.6 15.2 14.6 L15.8 13.2 L14.2 12.4 L13.4 13.1 C12.3 12.6 11.3 11.6 10.8 10.5 L11.5 9.7 L10.7 8.1 Z"></path></svg>
+</a>

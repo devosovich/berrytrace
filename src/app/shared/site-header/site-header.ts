@@ -1,13 +1,14 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
+import { injectCurrentLocale, localeRoute } from '../../i18n';
 import { LanguageSwitcher } from '../language-switcher/language-switcher';
 import { Logo } from '../logo/logo';
 
 @Component({
   selector: 'app-site-header',
-  imports: [Logo, LanguageSwitcher, RouterLink],
+  imports: [Logo, LanguageSwitcher, RouterLink, RouterLinkActive],
   templateUrl: './site-header.html',
   styleUrl: './site-header.css',
   host: {
@@ -18,6 +19,12 @@ import { Logo } from '../logo/logo';
 export class SiteHeader {
   /** Burger menu state; the menu is only visible below the desktop breakpoint (see site-header.css). */
   protected readonly menuOpen = signal(false);
+
+  private readonly locale = injectCurrentLocale();
+  /** Section links point at the landing, so they also work from other pages such as /order. */
+  protected readonly home = localeRoute(this.locale);
+  protected readonly order = localeRoute(this.locale, 'order');
+  protected readonly audit = localeRoute(this.locale, 'audit');
 
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 

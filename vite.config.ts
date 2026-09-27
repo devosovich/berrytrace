@@ -58,8 +58,8 @@ export default defineConfig(({ mode }) => ({
       ssr: true,
       static: true,
       prerender: {
-        // Expanded per locale by the i18n option: / (English), /en, /pl, /uk.
-        routes: ['/'],
+        // Expanded per locale by the i18n option: / (English), /en, /pl, /uk, and the same for each page.
+        routes: ['/', '/order', '/audit'],
       },
       i18n: {
         // Unprefixed URLs render in English.
@@ -71,4 +71,11 @@ export default defineConfig(({ mode }) => ({
     ngServerModePerEnvironment(),
     inlineGlobalCss(),
   ],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['src/test-setup.ts'],
+    include: ['src/**/*.spec.ts'],
+    reporters: ['default'],
+  },
 }));

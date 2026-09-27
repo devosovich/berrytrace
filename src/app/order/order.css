@@ -1,0 +1,153 @@
+/* Full-height page so the footer stays at the bottom on tall screens. */
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: #fdfdfc;
+  color: #3a3a3a;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 72px;
+  padding: 96px var(--bt-gutter) 104px;
+  border-bottom: 1px solid #efeae8;
+  background:
+    radial-gradient(1100px 520px at 88% 10%, #fcf1f3 0%, rgba(253, 253, 252, 0) 60%),
+    #fdfdfc;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.back {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin: -12px 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b6563;
+}
+
+.back:hover {
+  color: var(--bt-accent-dark);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 7px 14px 7px 8px;
+  background: #fbeef0;
+  border-radius: 999px;
+}
+
+.pulse-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background: var(--bt-accent);
+  animation: bt-pulse 1.8s ease-out infinite;
+}
+
+.eyebrow-text {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7d1f2e;
+}
+
+.title {
+  /* 56px on desktop, scaling down to 34px on phones. */
+  font-size: clamp(34px, 3.2vw + 10px, 56px);
+  line-height: 1.06;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  margin: 0 0 24px;
+  color: #1f1f1f;
+}
+
+.lead {
+  max-width: 560px;
+  margin: 0 0 40px;
+  font-size: 19px;
+  line-height: 1.6;
+  color: #5f5b59;
+}
+
+/* Fixed to the viewport; in the design it is absolute only because of the artboard. */
+.whatsapp-float {
+  position: fixed;
+  right: 36px;
+  bottom: 36px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #0b6e4f;
+  box-shadow: 0 14px 30px rgba(11, 110, 79, 0.35);
+  transition: transform 0.15s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.06);
+}
+
+.whatsapp-float:focus-visible {
+  outline: 3px solid rgba(11, 110, 79, 0.4);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 56px;
+    padding-block: 64px 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    gap: 48px;
+    padding-block: 40px 64px;
+  }
+
+  .eyebrow {
+    margin-bottom: 20px;
+  }
+
+  .lead {
+    font-size: 17px;
+    margin-bottom: 28px;
+  }
+
+  .whatsapp-float {
+    right: 16px;
+    bottom: 16px;
+    width: 56px;
+    height: 56px;
+  }
+}

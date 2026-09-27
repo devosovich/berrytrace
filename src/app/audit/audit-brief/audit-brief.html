@@ -1,0 +1,28 @@
+<div class="head">
+  <div class="title" i18n="@@audit.brief.title">Технічне завдання</div>
+  <span class="count" aria-live="polite" i18n="@@audit.brief.count">{{ selectedCount() }} з {{ checks.length }} пунктів</span>
+</div>
+
+<div class="field">
+  <div class="field-label" i18n="@@audit.brief.producer">Виробник</div>
+  <div class="select">
+    <ng-container i18n="@@audit.brief.producerValue">Berry Company 1, Вінницька обл.</ng-container>
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6B6563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9 L12 15 L18 9"></path></svg>
+  </div>
+</div>
+
+<div class="field">
+  <div id="bt-audit-checks" class="field-label" i18n="@@audit.brief.checks">Що перевірити</div>
+  <div class="chips" role="group" aria-labelledby="bt-audit-checks">
+    @for (check of checks; track check.id) {
+      <button type="button" class="chip" [attr.aria-pressed]="selected().has(check.id)" (click)="toggle(check.id)">
+        {{ check.label }}
+      </button>
+    }
+  </div>
+</div>
+
+<div class="field">
+  <div class="field-label" i18n="@@audit.brief.requirements">Вимоги до аудитора</div>
+  <div class="textarea" i18n="@@audit.brief.requirementsValue">Відібрати 3 проби з партії малини, перевірити журнали температур за останній місяць, відео камери зберігання.</div>
+</div>

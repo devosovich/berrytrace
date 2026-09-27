@@ -1,9 +1,9 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 @Component({
   selector: 'app-logo',
   template: `
-    <svg viewBox="20 30 160 180" width="30" height="34" aria-hidden="true">
+    <svg viewBox="20 30 160 180" [attr.width]="width()" [attr.height]="height()" aria-hidden="true">
       <path d="M100,80 L100,44" fill="none" stroke-width="8" stroke-linecap="round" style="stroke: var(--bt-accent-green);"></path>
       @for (angle of leafAngles; track angle) {
         <path d="M100,46 L110,66 L100,82 L90,66 Z" [attr.transform]="'rotate(' + angle + ' 100 82)'" style="fill: var(--bt-accent-green);"></path>
@@ -14,7 +14,9 @@ import { Component, input } from '@angular/core';
         }
       </g>
     </svg>
-    <div class="wordmark"><span style="color: var(--bt-accent);">Berry</span><span>Trace</span></div>
+    @if (wordmark()) {
+      <div class="wordmark"><span style="color: var(--bt-accent);">Berry</span><span>Trace</span></div>
+    }
   `,
   styles: `
     :host {
@@ -34,6 +36,11 @@ import { Component, input } from '@angular/core';
 export class Logo {
   /** Stroke drawn around each berry; should match the background the logo sits on. */
   readonly ring = input('#FDFDFC');
+  /** Show the "BerryTrace" name next to the mark. */
+  readonly wordmark = input(true);
+  /** Height of the mark in px; the width follows the mark's 30:34 proportions. */
+  readonly height = input(34);
+  protected readonly width = computed(() => Math.round((this.height() * 30) / 34));
 
   protected readonly leafAngles = [0, -62, 62, -108, 108];
   protected readonly berries = [

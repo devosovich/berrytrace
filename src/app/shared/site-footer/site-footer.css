@@ -92,7 +92,24 @@
 
 .legal {
   display: flex;
+  align-items: center;
   gap: 28px;
+}
+
+/* Reopens the cookie banner in its settings view. Styled like the other legal links. */
+.cookie-settings {
+  min-height: 44px;
+  margin: -12px 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.cookie-settings:hover {
+  color: var(--bt-accent-dark);
 }
 
 @media (max-width: 1024px) {

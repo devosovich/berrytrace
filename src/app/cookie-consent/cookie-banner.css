@@ -1,0 +1,259 @@
+/* Centred at the bottom of the viewport. */
+:host {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  margin-inline: auto;
+  z-index: 60;
+  width: 880px;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  border-radius: 22px;
+  box-shadow:
+    0 24px 60px rgba(58, 30, 36, 0.18),
+    0 2px 6px rgba(58, 30, 36, 0.06);
+}
+
+.card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #f1e3e6;
+  border-radius: 22px;
+  color: #3a3a3a;
+  font-family: 'Archivo', Helvetica, sans-serif;
+  outline: none;
+}
+
+.card:focus-visible {
+  box-shadow: 0 0 0 3px rgba(163, 38, 57, 0.35);
+}
+
+.intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #fbeef0;
+  color: var(--bt-accent);
+}
+
+.intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #1f1f1f;
+}
+
+.text {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #5f5b59;
+}
+
+.policy {
+  color: var(--bt-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f1e3e6;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+}
+
+.category + .category {
+  border-top: 1px solid #f1e3e6;
+}
+
+.category--necessary {
+  background: #fcf6f7;
+}
+
+.category-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.category-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f1f1f;
+}
+
+.category-hint {
+  font-size: 13px;
+  line-height: 1.45;
+  color: #6b6563;
+}
+
+.always {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--bt-accent-green);
+  background: #eef4ea;
+  border-radius: 999px;
+  padding: 5px 10px;
+}
+
+/* 48×28 track inside a 48×44 button, so the tap target meets the 44px minimum. */
+.switch {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  width: 48px;
+  height: 44px;
+  margin: -8px 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.track {
+  display: flex;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  width: 48px;
+  height: 28px;
+  padding: 3px;
+  border-radius: 999px;
+  background: #a9a0a2;
+  transition: background-color 0.15s ease;
+}
+
+.thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
+}
+
+.switch[aria-checked='true'] .track {
+  background: var(--bt-accent-green);
+}
+
+.switch[aria-checked='true'] .thumb {
+  transform: translateX(20px);
+}
+
+.switch:focus-visible {
+  outline: none;
+}
+
+.switch:focus-visible .track {
+  box-shadow: 0 0 0 3px rgba(76, 122, 61, 0.35);
+}
+
+/* Both choices are the same size so neither is visually pushed. */
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.action {
+  height: 46px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-family: 'Archivo', Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.action--outline {
+  background: #ffffff;
+  color: var(--bt-accent-dark);
+  border: 1.5px solid #e3c9ce;
+}
+
+.action--primary {
+  background: linear-gradient(135deg, var(--bt-accent), var(--bt-accent-dark));
+  color: var(--bt-bg);
+  border: none;
+  box-shadow: 0 8px 18px rgba(125, 31, 46, 0.22);
+}
+
+.text-button {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin: -8px 0 -10px;
+  padding: 0 12px;
+  background: none;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: 'Archivo', Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b6563;
+}
+
+.action:focus-visible,
+.text-button:focus-visible {
+  outline: 3px solid rgba(163, 38, 57, 0.35);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  :host {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+    max-width: none;
+    margin-inline: 0;
+    max-height: calc(100dvh - 24px);
+  }
+
+  .card {
+    padding: 20px;
+  }
+}

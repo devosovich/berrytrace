@@ -4,19 +4,19 @@
         <app-logo ring="#FCF6F7" />
         <div class="tagline" i18n>B2B-платформа для закупівлі української IQF-ягоди з простежуваністю кожної партії.</div>
         <div class="brand-actions">
-          <button class="bt-btn bt-btn--sm" type="button"><ng-container i18n>Замовити ягоду</ng-container>
+          <a class="bt-btn bt-btn--sm" [routerLink]="order"><ng-container i18n>Замовити ягоду</ng-container>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#FDFDFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg>
-          </button>
+          </a>
           <app-language-switcher surface="#FFFFFF" />
         </div>
       </div>
       <div class="column">
         <div class="column-title" i18n>Платформа</div>
-        <div class="link" i18n>Каталог постачальників</div><a class="link" routerLink="." fragment="process" i18n>Як відбувається співпраця</a><div class="link" i18n>Про нас</div><div class="link" i18n>Увійти в кабінет</div>
+        <a class="link" [routerLink]="order" i18n>Каталог постачальників</a><a class="link" [routerLink]="home" fragment="process" i18n>Як відбувається співпраця</a><div class="link" i18n>Про нас</div><a class="link" [routerLink]="order" i18n>Увійти в кабінет</a>
       </div>
       <div class="column">
         <div class="column-title" i18n>Послуги</div>
-        <div class="link" i18n>Аудит виробників</div><div class="link" i18n>Аналізи SGS</div><div class="link" i18n>Митниця і логістика</div><div class="link" i18n>Страхування вантажу</div>
+        <a class="link" [routerLink]="audit" i18n>Аудит виробників</a><div class="link" i18n>Аналізи SGS</div><div class="link" i18n>Митниця і логістика</div><div class="link" i18n>Страхування вантажу</div>
       </div>
       <div class="column">
         <div class="column-title" i18n>Контакти</div>
@@ -25,6 +25,6 @@
     </div>
     <div class="bottom">
       <div i18n>© 2026 BerryTrace. Усі права захищено.</div>
-      <div class="legal"><span i18n>Публічна оферта</span><span i18n>Політика конфіденційності</span></div>
+      <div class="legal"><span i18n>Публічна оферта</span><span i18n>Політика конфіденційності</span><button type="button" class="cookie-settings" (click)="cookieConsent.show('settings')" i18n="@@footer.cookieSettings">Налаштування cookie</button></div>
     </div>
   </footer>
