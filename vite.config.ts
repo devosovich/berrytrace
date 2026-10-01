@@ -2,7 +2,7 @@
 
 import { Plugin, defineConfig } from 'vite';
 import analog from '@analogjs/platform';
-import pages from './site-pages.json';
+import { DEFAULT_LOCALE, LOCALES, PAGES, SOURCE_LOCALE, buildRobots, buildSitemap } from './src/app/site.ts';
 
 /**
  * Analog's production build defines `ngServerMode` from the top-level `build.ssr`, which is unset
@@ -43,6 +43,22 @@ function inlineGlobalCss(): Plugin {
   };
 }
 
+/**
+ * Emits `sitemap.xml` and `robots.txt` into the client build, generated from the page and locale
+ * lists in src/app/site.ts. The origin is the production domain (VITE_SITE_URL).
+ */
+function seoFiles(origin: string): Plugin {
+  return {
+    name: 'seo-files',
+    apply: 'build',
+    generateBundle() {
+      if (this.environment.name !== 'client') return;
+      this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: buildSitemap(origin) });
+      this.emitFile({ type: 'asset', fileName: 'robots.txt', source: buildRobots(origin) });
+    },
+  };
+}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // Served from https://devosovich.github.io/berrytrace/ for now. On the custom domain (berrytrace.com)
@@ -61,17 +77,18 @@ export default defineConfig(({ mode }) => ({
       static: true,
       prerender: {
         // Expanded per locale by the i18n option: / (English), /en, /pl, /uk, and the same for each page.
-        routes: pages,
+        routes: PAGES.map((page) => `/${page}`),
       },
       i18n: {
         // Unprefixed URLs render in English.
-        defaultLocale: 'en',
+        defaultLocale: DEFAULT_LOCALE,
         // The first entry must stay the source locale the templates are written in (Ukrainian).
-        locales: ['uk', 'en', 'pl'],
+        locales: [SOURCE_LOCALE, ...LOCALES.filter((locale) => locale !== SOURCE_LOCALE)],
       },
     }),
     ngServerModePerEnvironment(),
     inlineGlobalCss(),
+    seoFiles((process.env.VITE_SITE_URL || 'https://berrytrace.com').replace(/\/$/, '')),
   ],
   test: {
     globals: true,

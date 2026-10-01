@@ -1,30 +1,27 @@
 import { Component, inject } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 
-import { SiteFooter } from '../../shared/site-footer/site-footer';
-import { SiteHeader } from '../../shared/site-header/site-header';
 import { Seo } from '../../seo';
+import { LegalDocument, LegalImage, LegalSection } from '../legal-document';
 
 /** Public offer (terms of use). Draft text: have it reviewed by a lawyer before relying on it. */
 @Component({
   selector: 'app-terms',
-  imports: [SiteHeader, SiteFooter],
-  templateUrl: '../legal.html',
-  styleUrl: '../../shared/info-page.css',
+  imports: [LegalDocument],
+  template: `<app-legal-document [title]="title" [lead]="lead" [image]="image" [sections]="sections" />`,
+  styles: ':host { display: block; }',
 })
 export default class Terms {
   protected readonly title = $localize`:@@terms.title:Публічна оферта`;
   protected readonly lead = $localize`:@@terms.lead:Загальні умови користування сайтом BerryTrace та порядок взаємодії із замовниками.`;
 
-  protected readonly image = {
-    src: 'images/pages/terms.webp',
-    srcset: 'images/pages/terms-640.webp 640w, images/pages/terms.webp 1024w',
+  protected readonly image: LegalImage = {
+    image: 'images/pages/terms',
     width: 1024,
     height: 559,
     alt: $localize`:@@terms.heroAlt:Договір із ручкою та печаткою на столі, у вікні — рукостискання`,
   };
 
-  protected readonly sections = [
+  protected readonly sections: LegalSection[] = [
     {
       title: $localize`:@@terms.s1.title:1. Загальні положення`,
       paragraphs: [$localize`:@@terms.s1.p1:Цей документ визначає умови користування сайтом BerryTrace й порядок взаємодії між BerryTrace та замовниками. Користуючись сайтом або надсилаючи нам запит, ви погоджуєтеся з цими умовами.`],
@@ -68,11 +65,10 @@ export default class Terms {
   ];
 
   constructor() {
-    inject(Title).setTitle($localize`:@@terms.meta.title:Публічна оферта — BerryTrace`);
-    inject(Meta).updateTag({
-      name: 'description',
-      content: $localize`:@@terms.meta.description:Публічна оферта BerryTrace: загальні умови користування сайтом і порядок взаємодії із замовниками.`,
+    inject(Seo).set({
+      page: 'terms',
+      title: $localize`:@@terms.meta.title:Публічна оферта — BerryTrace`,
+      description: $localize`:@@terms.meta.description:Публічна оферта BerryTrace: загальні умови користування сайтом і порядок взаємодії із замовниками.`,
     });
-    inject(Seo).update('terms');
   }
 }

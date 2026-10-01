@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="media">
+    <img class="photo" [src]="src()" [attr.srcset]="srcset()" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(50vw - 60px), 400px" width="800" height="600" [alt]="card().alt" loading="lazy" decoding="async">
+    <span class="badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FDFDFC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        @for (d of paths(); track d) {
+          <path [attr.d]="d"></path>
+        }
+      </svg>
+    </span>
+  </div>
+  <div class="text">
+    <h3 class="title">{{ card().title }}</h3>
+    <p class="body">{{ card().text }}</p>
+  </div>
+</div>

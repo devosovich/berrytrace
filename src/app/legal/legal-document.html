@@ -2,14 +2,14 @@
 <main class="main">
   <section class="hero hero--media">
     <div class="hero-copy">
-      <h1 class="title">{{ title }}</h1>
-      <p class="lead">{{ lead }}</p>
+      <h1 class="title">{{ title() }}</h1>
+      <p class="lead">{{ lead() }}</p>
     </div>
-    <img class="hero-img" [src]="image.src" [attr.srcset]="image.srcset" sizes="(max-width: 1024px) calc(100vw - 80px), 560px" [width]="image.width" [height]="image.height" [alt]="image.alt" fetchpriority="high" decoding="async">
+    <img class="hero-img" [src]="image().image + '.webp'" [attr.srcset]="image().image + '-640.webp 640w, ' + image().image + '.webp 1024w'" sizes="(max-width: 1024px) calc(100vw - 80px), 560px" [width]="image().width" [height]="image().height" [alt]="image().alt" fetchpriority="high" decoding="async">
   </section>
 
   <article class="legal">
-    @for (section of sections; track section.title) {
+    @for (section of sections(); track section.title) {
       <section class="legal-section">
         <h2 class="legal-heading">{{ section.title }}</h2>
         @for (paragraph of section.paragraphs; track paragraph) {

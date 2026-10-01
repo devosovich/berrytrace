@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 
 import { injectCurrentLocale, localeRoute } from '../i18n';
@@ -22,11 +21,10 @@ export default class Order {
   protected readonly chatLink = whatsappLink();
 
   constructor() {
-    inject(Title).setTitle($localize`:@@order.meta.title:Замовити ягоду — BerryTrace`);
-    inject(Meta).updateTag({
-      name: 'description',
-      content: $localize`:@@order.meta.description:Онлайн-замовлення IQF-ягоди на BerryTrace скоро запрацює. Підпишіться на повідомлення або напишіть нам у WhatsApp.`,
+    inject(Seo).set({
+      page: 'order',
+      title: $localize`:@@order.meta.title:Замовити ягоду — BerryTrace`,
+      description: $localize`:@@order.meta.description:Онлайн-замовлення IQF-ягоди на BerryTrace скоро запрацює. Підпишіться на повідомлення або напишіть нам у WhatsApp.`,
     });
-    inject(Seo).update('order');
   }
 }

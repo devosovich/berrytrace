@@ -2,16 +2,10 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { injectLocale } from '@analogjs/router/tokens';
 
-/** Locales supported by the site, in the order the language switcher shows them. */
-export const LOCALES = ['en', 'pl', 'uk'] as const;
+import { DEFAULT_LOCALE, LOCALES, Locale, Page, localePath } from './site';
 
-export type Locale = (typeof LOCALES)[number];
-
-/** Locale served at unprefixed URLs (`/`). Must match `defaultLocale` in vite.config.ts. */
-export const DEFAULT_LOCALE: Locale = 'en';
-
-/** Pages of the site, as paths relative to a locale root (`''` is the landing). */
-export type Page = '' | 'order' | 'audit' | 'about' | 'customs' | 'privacy' | 'terms';
+export { DEFAULT_LOCALE, LOCALES, PAGES } from './site';
+export type { Locale, Page } from './site';
 
 export function isLocale(value: string | null | undefined): value is Locale {
   return LOCALES.includes(value as Locale);
@@ -47,15 +41,12 @@ export function pageFromPath(pathname: string): string {
 
 /** Full URL (including the deploy base) of a page in the given locale; the default locale has no prefix. */
 export function localeUrl(locale: Locale, page = ''): string {
-  const prefix = locale === DEFAULT_LOCALE ? '' : `${locale}/`;
-  const path = page ? `${page.replace(/\/$/, '')}/` : '';
-  return `${BASE_URL}${prefix}${path}`;
+  return `${BASE_URL}${localePath(locale, page)}`;
 }
 
 /** Router path of a page in the given locale, for `routerLink` (the router adds the deploy base). */
 export function localeRoute(locale: Locale, page: Page = ''): string {
-  const prefix = locale === DEFAULT_LOCALE ? '' : `/${locale}`;
-  return `${prefix}/${page}`.replace(/(.)\/$/, '$1');
+  return `/${localePath(locale, page)}`.replace(/(.)\/$/, '$1');
 }
 
 /** Locale of the current page. Must be called in an injection context. */

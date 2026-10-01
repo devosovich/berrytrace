@@ -9,7 +9,6 @@
     "ng": "ng",
     "dev": "vite",
     "start": "npm run dev",
-    "prebuild": "node scripts/generate-sitemap.mjs",
     "build": "vite build",
     "watch": "vite build --watch",
     "test": "vitest",

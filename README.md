@@ -30,8 +30,8 @@ Deployment-specific values are read from `VITE_*` environment variables at build
 |---|---|---|
 | `VITE_SUBSCRIBE_ENDPOINT` | URL the `/order` form POSTs `{ "email", "locale" }` to (external service — the site is static) | empty: the form shows its error state |
 | `VITE_WHATSAPP_NUMBER` | WhatsApp links and number on `/order` | `+380 44 000 00 00` (placeholder) |
-| `VITE_SITE_URL` | Public origin used for canonical URLs, `hreflang`, social tags and the sitemap | `https://berrytrace.com` |
-| `VITE_BASE` | Vite `base` path | `/berrytrace/` (GitHub Pages project URL); use `/` on the custom domain |
+| `VITE_SITE_URL` | (repository variable `SITE_URL`) Public origin used for canonical URLs, `hreflang`, social tags and the sitemap | `https://berrytrace.com` |
+| `VITE_BASE` | Vite `base` path (repository variable `BASE`) | `/berrytrace/` (GitHub Pages project URL); use `/` on the custom domain |
 | `VITE_PRIVACY_POLICY_URL` | Link in the cookie banner | empty: the built-in `/privacy` page |
 
 ## Cookie consent
@@ -68,6 +68,6 @@ Supported locales are configured in two places: `vite.config.ts` (`i18n` option)
 ## SEO
 
 - Every page calls `Seo.update()` (`src/app/seo.ts`), which writes the canonical URL, `hreflang` alternates (`en`, `pl`, `uk`, `x-default` = English), Open Graph and Twitter tags into the prerendered HTML. The landing page also adds Organization/WebSite JSON-LD. English is canonical at the unprefixed URL (`/about/`), so `/en/about/` points to it.
-- The page list lives in `site-pages.json` (used for prerendering and the sitemap). `npm run build` regenerates `public/sitemap.xml` and `public/robots.txt` first (`scripts/generate-sitemap.mjs`). Add a page there and it is picked up everywhere.
+- Locales, the default locale and the page list live in `src/app/site.ts` and feed the router, prerendering, `hreflang` and the sitemap. `npm run build` emits `sitemap.xml` and `robots.txt` (the `seoFiles` plugin in `vite.config.ts`); nothing generated is committed. Add a page to `PAGES` and it is picked up everywhere.
 - Share image: `public/og-image.jpg` (1200×630).
 - Going live on berrytrace.com: set `VITE_BASE=/` for the build, add `public/CNAME` containing `berrytrace.com`, then add the site in Google Search Console and submit `https://berrytrace.com/sitemap.xml`. Canonical URLs already point to berrytrace.com, so they only become valid once the domain serves the site.

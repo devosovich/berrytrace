@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
-  background: #fdfdfc;
-  color: #3a3a3a;
+  background: var(--bt-bg);
+  color: var(--bt-text);
 }
 
 .main {
@@ -24,7 +24,7 @@
   border-bottom: 1px solid #efeae8;
   background:
     radial-gradient(1200px 500px at 85% 20%, #fcf1f3 0%, rgba(253, 253, 252, 0) 60%),
-    #fdfdfc;
+    var(--bt-bg);
 }
 
 .badge {
@@ -33,7 +33,7 @@
   gap: 10px;
   margin-bottom: 28px;
   padding: 7px 14px 7px 8px;
-  background: #fbeef0;
+  background: var(--bt-tint);
   border-radius: 999px;
 }
 
@@ -61,7 +61,7 @@
   line-height: 1.04;
   font-weight: 700;
   letter-spacing: -0.04em;
-  color: #1f1f1f;
+  color: var(--bt-heading);
 }
 
 .lead {
@@ -69,7 +69,7 @@
   margin: 0 0 36px;
   font-size: 19px;
   line-height: 1.6;
-  color: #5f5b59;
+  color: var(--bt-text-muted);
 }
 
 .cta {
@@ -77,36 +77,6 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 14px;
-}
-
-.bt-btn--md {
-  gap: 10px;
-  font-size: 16px;
-  padding: 15px 26px;
-  box-shadow: 0 8px 18px rgba(125, 31, 46, 0.22);
-}
-
-.outline-btn {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  padding: 14px 24px;
-  border: 1.5px solid #e3c9ce;
-  border-radius: 999px;
-  background: #ffffff;
-  color: var(--bt-accent-dark);
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.outline-btn:hover {
-  color: var(--bt-accent-dark);
-  border-color: var(--bt-accent);
-}
-
-.outline-btn:focus-visible {
-  outline: 3px solid rgba(163, 38, 57, 0.35);
-  outline-offset: 3px;
 }
 
 /* Hero with a photo on the right (Customs & logistics, legal pages). */
@@ -146,7 +116,7 @@
 
 .section--tinted {
   background: #fcf6f7;
-  border-block: 1px solid #f1e3e6;
+  border-block: 1px solid var(--bt-border);
 }
 
 .section-head {
@@ -162,118 +132,18 @@
   line-height: 1.05;
   font-weight: 700;
   letter-spacing: -0.035em;
-  color: #1f1f1f;
+  color: var(--bt-heading);
 }
 
-/* Cards with an icon */
+/* Grid of media cards (see shared/media-card) */
 .cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
 
-.card {
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-  padding: 28px;
-  background: #ffffff;
-  border: 1px solid #f1e3e6;
-  border-radius: 20px;
-}
-
-.card-icon {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: #fbeef0;
-  color: var(--bt-accent);
-}
-
-.card-text {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 0;
-}
-
-.card-title {
-  margin: 0;
-  font-size: 19px;
-  font-weight: 600;
-  color: #1f1f1f;
-}
-
-.card-body {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.6;
-  color: #5f5b59;
-}
-
 .cards--four {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-/* Card with an inset photo and a red icon badge (Customs & logistics) */
-.card--media {
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0;
-  padding: 8px;
-  border-color: #f1e9ea;
-  border-radius: 18px;
-  box-shadow:
-    0 1px 2px rgba(58, 58, 58, 0.04),
-    0 10px 28px rgba(163, 38, 57, 0.06);
-}
-
-.card-media {
-  position: relative;
-}
-
-.card-photo {
-  display: block;
-  width: 100%;
-  height: 168px;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.card-badge {
-  position: absolute;
-  left: 14px;
-  bottom: -22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: var(--bt-accent);
-  box-shadow: 0 6px 14px rgba(163, 38, 57, 0.28);
-}
-
-.card--media .card-body {
-  font-size: 14.5px;
-  line-height: 1.55;
-}
-
-.card--media .card-text {
-  flex: 1;
-  padding: 40px 14px 14px;
-  gap: 12px;
-}
-
-.card--media .card-title {
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
 }
 
 /* Numbered steps / principles */
@@ -292,7 +162,7 @@
   gap: 16px;
   padding: 30px;
   background: #ffffff;
-  border: 1px solid #f1e3e6;
+  border: 1px solid var(--bt-border);
   border-radius: 20px;
 }
 
@@ -300,7 +170,7 @@
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: #3a3a3a;
+  color: var(--bt-text);
 }
 
 .step-title {
@@ -308,14 +178,14 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 1.3;
-  color: #1f1f1f;
+  color: var(--bt-heading);
 }
 
 .step-text {
   margin: 0;
   font-size: 15.5px;
   line-height: 1.6;
-  color: #5f5b59;
+  color: var(--bt-text-muted);
 }
 
 /* ---------- Closing call to action ---------- */
@@ -348,7 +218,7 @@
   line-height: 1.15;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: #fdfdfc;
+  color: var(--bt-bg);
 }
 
 .final-text {
@@ -366,7 +236,7 @@
   white-space: nowrap;
   padding: 16px 28px;
   border-radius: 999px;
-  background: #fdfdfc;
+  background: var(--bt-bg);
   color: var(--bt-accent-dark);
   font-size: 16px;
   font-weight: 600;
@@ -403,7 +273,7 @@
   line-height: 1.25;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: #1f1f1f;
+  color: var(--bt-heading);
 }
 
 .legal-paragraph {
@@ -502,7 +372,6 @@
     gap: 14px;
   }
 
-  .card:not(.card--media),
   .step {
     padding: 22px;
   }

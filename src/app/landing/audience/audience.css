@@ -27,13 +27,13 @@
   font-weight: 700;
   letter-spacing: -0.03em;
   margin: 0;
-  color: #1F1F1F;
+  color: var(--bt-heading);
 }
 
 .lead {
   font-size: 17px;
   line-height: 1.55;
-  color: #5F5B59;
+  color: var(--bt-text-muted);
 }
 
 .stat {
@@ -71,13 +71,13 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #6B6563;
+  color: var(--bt-text-soft);
 }
 
 .stat-text {
   font-size: 15px;
   line-height: 1.5;
-  color: #5F5B59;
+  color: var(--bt-text-muted);
   max-width: 330px;
   padding-left: 24px;
 }
@@ -142,13 +142,13 @@
   line-height: 1.3;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: #1F1F1F;
+  color: var(--bt-heading);
 }
 
 .card-text {
   font-size: 14px;
   line-height: 1.5;
-  color: #6B6563;
+  color: var(--bt-text-soft);
 }
 
 @media (max-width: 1024px) {

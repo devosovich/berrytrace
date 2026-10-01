@@ -5,7 +5,7 @@
 .trusted {
   padding: 64px var(--bt-gutter) 72px;
   border-bottom: 1px solid #EFEAE8;
-  background: #FDFDFC;
+  background: var(--bt-bg);
   display: grid;
   grid-template-columns: 300px minmax(0, 1fr);
   align-items: center;
@@ -23,7 +23,7 @@
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.025em;
-  color: #1F1F1F;
+  color: var(--bt-heading);
 }
 
 .marquee {
@@ -59,8 +59,8 @@
   flex-shrink: 0;
   width: 196px;
   height: 92px;
-  background: #3A3A3A;
-  border: 1px solid #3A3A3A;
+  background: var(--bt-text);
+  border: 1px solid var(--bt-text);
   border-radius: 18px;
   display: flex;
   align-items: center;

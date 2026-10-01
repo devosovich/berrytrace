@@ -16,6 +16,11 @@
   --bt-accent-green: #4c7a3d;
   --bt-bg: #fdfdfc;
   --bt-text: #3a3a3a;
+  --bt-heading: #1f1f1f;
+  --bt-text-muted: #5f5b59;
+  --bt-text-soft: #6b6563;
+  --bt-tint: #fbeef0;
+  --bt-border: #f1e3e6;
 
   /* Horizontal page padding. Breakpoints used across sections: 1024px (tablet), 640px (phone). */
   --bt-gutter: 80px;
@@ -73,7 +78,7 @@ a:hover {
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #6b6563;
+  color: var(--bt-text-soft);
 }
 
 /* Highlighted words inside headings. */
@@ -120,6 +125,37 @@ a.bt-btn:hover {
   font-size: 15px;
   padding: 12px 22px;
   box-shadow: 0 8px 18px rgba(125, 31, 46, 0.22);
+}
+
+/* Medium pill button and the outlined secondary button used next to it. */
+.bt-btn--md {
+  gap: 10px;
+  font-size: 16px;
+  padding: 15px 26px;
+  box-shadow: 0 8px 18px rgba(125, 31, 46, 0.22);
+}
+
+.outline-btn {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 14px 24px;
+  border: 1.5px solid #e3c9ce;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--bt-accent-dark);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.outline-btn:hover {
+  color: var(--bt-accent-dark);
+  border-color: var(--bt-accent);
+}
+
+.outline-btn:focus-visible {
+  outline: 3px solid rgba(163, 38, 57, 0.35);
+  outline-offset: 3px;
 }
 
 /*

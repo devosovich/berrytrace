@@ -27,13 +27,13 @@
   font-weight: 700;
   letter-spacing: -0.035em;
   margin: 0;
-  color: #1F1F1F;
+  color: var(--bt-heading);
 }
 
 .lead {
   font-size: 17px;
   line-height: 1.6;
-  color: #5F5B59;
+  color: var(--bt-text-muted);
   max-width: 360px;
 }
 
@@ -58,7 +58,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #FBEEF0;
+  background: var(--bt-tint);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,7 +92,7 @@
 }
 
 .author-logo.author-logo--dark {
-  background: #3a3a3a;
+  background: var(--bt-text);
   border: none;
 }
 
@@ -129,7 +129,7 @@
 .author-name {
   font-size: 15px;
   font-weight: 700;
-  color: #1F1F1F;
+  color: var(--bt-heading);
 }
 
 .author-role {

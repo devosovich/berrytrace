@@ -14,8 +14,14 @@ export const SITE_CONFIG = {
    */
   subscribeEndpoint: import.meta.env.VITE_SUBSCRIBE_ENDPOINT ?? '',
 
-  /** WhatsApp number in international format; any spaces or punctuation are stripped for links. */
-  whatsappNumber: import.meta.env.VITE_WHATSAPP_NUMBER || '+380 44 000 00 00',
+  /** Public contact email, shown in the footer and in structured data. */
+  contactEmail: 'sales@berrytrace.com',
+
+  /**
+   * Company phone number in international format; it is also the WhatsApp number. Spaces and
+   * punctuation are stripped for `tel:` and `wa.me` links. Set via VITE_WHATSAPP_NUMBER.
+   */
+  phoneNumber: import.meta.env.VITE_WHATSAPP_NUMBER || '+380 44 000 00 00',
 
   /** External privacy policy URL for the cookie banner. Empty = the built-in /privacy page. */
   privacyPolicyUrl: import.meta.env.VITE_PRIVACY_POLICY_URL ?? '',
@@ -27,8 +33,13 @@ export const SITE_CONFIG = {
   cookiePolicyVersion: 1,
 } as const;
 
+/** `tel:` link for the configured number. */
+export function phoneLink(): string {
+  return `tel:+${SITE_CONFIG.phoneNumber.replace(/\D/g, '')}`;
+}
+
 /** `https://wa.me/…` link to the configured number, optionally with a pre-filled message. */
 export function whatsappLink(text?: string): string {
-  const digits = SITE_CONFIG.whatsappNumber.replace(/\D/g, '');
+  const digits = SITE_CONFIG.phoneNumber.replace(/\D/g, '');
   return `https://wa.me/${digits}${text ? `?text=${encodeURIComponent(text)}` : ''}`;
 }

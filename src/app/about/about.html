@@ -28,36 +28,9 @@
       <h2 class="section-title" i18n="@@about.do.title">Один партнер на шляху від поля до вашого складу</h2>
     </div>
     <div class="cards">
-      <div class="card card--media">
-        <div class="card-media">
-          <img class="card-photo" src="images/about/producers.webp" srcset="images/about/producers-480.webp 480w, images/about/producers.webp 800w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(50vw - 60px), 400px" width="800" height="600" alt="Перевірений виробник заморожених ягід" i18n-alt="@@about.do.producers.imgAlt" loading="lazy" decoding="async">
-          <span class="card-badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FDFDFC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L20 6 V12 C20 16.5 16.5 20 12 21 C7.5 20 4 16.5 4 12 V6 Z"></path><path d="M9 12 L11 14 L15 10"></path></svg></span>
-        </div>
-        <div class="card-text">
-          <h3 class="card-title" i18n="@@about.do.producers.title">Надійні виробники</h3>
-          <p class="card-body" i18n="@@about.do.producers.text">Співпрацюємо лише з перевіреними виробниками: контролюємо якість продукції, сертифікацію та необхідні документи.</p>
-        </div>
-      </div>
-      <div class="card card--media">
-        <div class="card-media">
-          <img class="card-photo" src="images/about/transparency.webp" srcset="images/about/transparency-480.webp 480w, images/about/transparency.webp 800w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(50vw - 60px), 400px" width="800" height="600" alt="Планшет із відстеженням партії на палеті з ящиками заморожених ягід" i18n-alt="@@about.do.transparency.imgAlt" loading="lazy" decoding="async">
-          <span class="card-badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FDFDFC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12 C5 6 19 6 22 12 C19 18 5 18 2 12 Z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
-        </div>
-        <div class="card-text">
-          <h3 class="card-title" i18n="@@about.do.transparency.title">Прозорість кожної партії</h3>
-          <p class="card-body" i18n="@@about.do.transparency.text">Ви знаєте походження продукції, що саме отримуєте і де зараз ваша партія — на кожному етапі.</p>
-        </div>
-      </div>
-      <div class="card card--media">
-        <div class="card-media">
-          <img class="card-photo" src="images/about/logistics.webp" srcset="images/about/logistics-480.webp 480w, images/about/logistics.webp 800w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(50vw - 60px), 400px" width="800" height="600" alt="Рефрижераторна логістика та документи" i18n-alt="@@about.do.logistics.imgAlt" loading="lazy" decoding="async">
-          <span class="card-badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FDFDFC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7 H14 V17 H3 Z"></path><path d="M14 10 H18 L21 13 V17 H14"></path><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg></span>
-        </div>
-        <div class="card-text">
-          <h3 class="card-title" i18n="@@about.do.logistics.title">Логістика та документи</h3>
-          <p class="card-body" i18n="@@about.do.logistics.text">Координуємо формування партії, рефрижераторний транспорт, експортні документи та доставку.</p>
-        </div>
-      </div>
+      @for (card of services; track card.image) {
+        <app-media-card [card]="card" />
+      }
     </div>
   </section>
 
@@ -70,46 +43,9 @@
       <h2 class="section-title" i18n="@@about.principles.title">На чому ґрунтується наша робота</h2>
     </div>
     <div class="cards cards--four">
-      <div class="card card--media">
-        <div class="card-media">
-          <img class="card-photo" src="images/about/principle1.webp" srcset="images/about/principle1-480.webp 480w, images/about/principle1.webp 800w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(50vw - 60px), 400px" width="800" height="600" alt="Скляна банка із замороженою малиною та лупа на білому столі" i18n-alt="@@about.principle1.imgAlt" loading="lazy" decoding="async">
-          <span class="card-badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FDFDFC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12 C5 6 19 6 22 12 C19 18 5 18 2 12 Z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
-        </div>
-        <div class="card-text">
-          <h3 class="card-title" i18n="@@about.principle1.title">Прозорість</h3>
-          <p class="card-body" i18n="@@about.principle1.text">Відкрито показуємо, звідки походить продукція та як проходить поставка.</p>
-        </div>
-      </div>
-      <div class="card card--media">
-        <div class="card-media">
-          <img class="card-photo" src="images/about/principle2.webp" srcset="images/about/principle2-480.webp 480w, images/about/principle2.webp 800w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(50vw - 60px), 400px" width="800" height="600" alt="Лаборант у рукавичках тримає лоток із замороженими ягодами для перевірки" i18n-alt="@@about.principle2.imgAlt" loading="lazy" decoding="async">
-          <span class="card-badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FDFDFC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"></circle><path d="M9 13.5 L8 21 L12 18.5 L16 21 L15 13.5"></path></svg></span>
-        </div>
-        <div class="card-text">
-          <h3 class="card-title" i18n="@@about.principle2.title">Якість</h3>
-          <p class="card-body" i18n="@@about.principle2.text">Працюємо лише з виробниками, які підтверджують якість документами та аналізами.</p>
-        </div>
-      </div>
-      <div class="card card--media">
-        <div class="card-media">
-          <img class="card-photo" src="images/about/principle3.webp" srcset="images/about/principle3-480.webp 480w, images/about/principle3.webp 800w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(50vw - 60px), 400px" width="800" height="600" alt="Відповідальність: контроль на місці виробництва" i18n-alt="@@about.principle3.imgAlt" loading="lazy" decoding="async">
-          <span class="card-badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FDFDFC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L20 6 V12 C20 16.5 16.5 20 12 21 C7.5 20 4 16.5 4 12 V6 Z"></path><path d="M9 12 L11 14 L15 10"></path></svg></span>
-        </div>
-        <div class="card-text">
-          <h3 class="card-title" i18n="@@about.principle3.title">Відповідальність</h3>
-          <p class="card-body" i18n="@@about.principle3.text">Відповідаємо перед клієнтом за результат поставки й шукаємо рішення, коли щось іде не за планом.</p>
-        </div>
-      </div>
-      <div class="card card--media">
-        <div class="card-media">
-          <img class="card-photo" src="images/about/principle4.webp" srcset="images/about/principle4-480.webp 480w, images/about/principle4.webp 800w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(50vw - 60px), 400px" width="800" height="600" alt="Ноутбук, чашка та миска ягід на світлому робочому столі" i18n-alt="@@about.principle4.imgAlt" loading="lazy" decoding="async">
-          <span class="card-badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#FDFDFC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L14 10 L21 12 L14 14 L12 21 L10 14 L3 12 L10 10 Z"></path></svg></span>
-        </div>
-        <div class="card-text">
-          <h3 class="card-title" i18n="@@about.principle4.title">Простота</h3>
-          <p class="card-body" i18n="@@about.principle4.text">Мінімум бюрократії: запит, пропозиція й поставка — в одному місці.</p>
-        </div>
-      </div>
+      @for (card of principles; track card.image) {
+        <app-media-card [card]="card" />
+      }
     </div>
   </section>
 

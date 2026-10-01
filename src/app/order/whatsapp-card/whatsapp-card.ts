@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Logo } from '../../shared/logo/logo';
-import { SITE_CONFIG, whatsappLink } from '../../site-config';
+import { SITE_CONFIG, phoneLink, whatsappLink } from '../../site-config';
 
 /** Chat-style card that sends visitors to WhatsApp while online ordering is not live yet. */
 @Component({
@@ -11,7 +11,8 @@ import { SITE_CONFIG, whatsappLink } from '../../site-config';
   styleUrl: './whatsapp-card.css',
 })
 export class WhatsappCard {
-  protected readonly phone = SITE_CONFIG.whatsappNumber;
+  protected readonly phone = SITE_CONFIG.phoneNumber;
+  protected readonly phoneHref = phoneLink();
   protected readonly chatLink = whatsappLink();
 
   /** Quick replies; each opens WhatsApp with the message already typed. */

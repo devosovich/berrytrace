@@ -1,30 +1,27 @@
 import { Component, inject } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 
-import { SiteFooter } from '../../shared/site-footer/site-footer';
-import { SiteHeader } from '../../shared/site-header/site-header';
 import { Seo } from '../../seo';
+import { LegalDocument, LegalImage, LegalSection } from '../legal-document';
 
 /** Privacy policy. Draft text: have it reviewed by a lawyer before relying on it. */
 @Component({
   selector: 'app-privacy',
-  imports: [SiteHeader, SiteFooter],
-  templateUrl: '../legal.html',
-  styleUrl: '../../shared/info-page.css',
+  imports: [LegalDocument],
+  template: `<app-legal-document [title]="title" [lead]="lead" [image]="image" [sections]="sections" />`,
+  styles: ':host { display: block; }',
 })
 export default class Privacy {
   protected readonly title = $localize`:@@privacy.title:Політика конфіденційності`;
   protected readonly lead = $localize`:@@privacy.lead:Пояснюємо, які дані ми збираємо на сайті BerryTrace, навіщо вони потрібні та як ви можете ними керувати.`;
 
-  protected readonly image = {
-    src: 'images/pages/privacy.webp',
-    srcset: 'images/pages/privacy-640.webp 640w, images/pages/privacy.webp 1024w',
+  protected readonly image: LegalImage = {
+    image: 'images/pages/privacy',
     width: 1024,
     height: 572,
     alt: $localize`:@@privacy.heroAlt:Закритий ноутбук, замок і документи на столі — захист ваших даних`,
   };
 
-  protected readonly sections = [
+  protected readonly sections: LegalSection[] = [
     {
       title: $localize`:@@privacy.s1.title:1. Які дані ми збираємо`,
       paragraphs: [$localize`:@@privacy.s1.p1:Ми збираємо лише ті дані, які потрібні для роботи сайту та зв'язку з вами:`],
@@ -63,11 +60,10 @@ export default class Privacy {
   ];
 
   constructor() {
-    inject(Title).setTitle($localize`:@@privacy.meta.title:Політика конфіденційності — BerryTrace`);
-    inject(Meta).updateTag({
-      name: 'description',
-      content: $localize`:@@privacy.meta.description:Які дані збирає BerryTrace, навіщо їх використовує, як довго зберігає та які права має користувач.`,
+    inject(Seo).set({
+      page: 'privacy',
+      title: $localize`:@@privacy.meta.title:Політика конфіденційності — BerryTrace`,
+      description: $localize`:@@privacy.meta.description:Які дані збирає BerryTrace, навіщо їх використовує, як довго зберігає та які права має користувач.`,
     });
-    inject(Seo).update('privacy');
   }
 }

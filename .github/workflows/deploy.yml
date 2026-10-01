@@ -33,6 +33,9 @@ jobs:
           VITE_SUBSCRIBE_ENDPOINT: ${{ vars.SUBSCRIBE_ENDPOINT }}
           VITE_WHATSAPP_NUMBER: ${{ vars.WHATSAPP_NUMBER }}
           VITE_PRIVACY_POLICY_URL: ${{ vars.PRIVACY_POLICY_URL }}
+          # Production origin for canonical URLs and the sitemap, and the Vite base path (use / on berrytrace.com).
+          VITE_SITE_URL: ${{ vars.SITE_URL }}
+          VITE_BASE: ${{ vars.BASE }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -11,7 +11,7 @@
   border-bottom: 1px solid #efeae8;
   background:
     radial-gradient(1200px 500px at 85% 20%, #fcf1f3 0%, rgba(253, 253, 252, 0) 60%),
-    #fdfdfc;
+    var(--bt-bg);
 }
 
 .copy {
@@ -25,7 +25,7 @@
   align-self: flex-start;
   align-items: center;
   gap: 10px;
-  background: #fbeef0;
+  background: var(--bt-tint);
   border-radius: 999px;
   padding: 7px 14px 7px 8px;
   margin-bottom: 28px;
@@ -59,13 +59,13 @@
   font-weight: 700;
   letter-spacing: -0.04em;
   margin: 0 0 26px;
-  color: #1f1f1f;
+  color: var(--bt-heading);
 }
 
 .lead {
   font-size: 19px;
   line-height: 1.6;
-  color: #5f5b59;
+  color: var(--bt-text-muted);
   margin: 0 0 36px;
   max-width: 580px;
 }
@@ -91,7 +91,7 @@
   gap: 8px;
   font-size: 14px;
   font-weight: 500;
-  color: #3a3a3a;
+  color: var(--bt-text);
 }
 
 .check {
@@ -99,7 +99,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #fbeef0;
+  background: var(--bt-tint);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,7 +144,7 @@
 .map-label-text {
   font-size: 13.5px;
   font-weight: 600;
-  color: #1f1f1f;
+  color: var(--bt-heading);
 }
 
 .legend {
@@ -160,7 +160,7 @@
   gap: 6px;
   font-size: 13px;
   font-weight: 500;
-  color: #3a3a3a;
+  color: var(--bt-text);
 }
 
 .cold-chain {
@@ -177,7 +177,7 @@
   width: 38px;
   height: 38px;
   border-radius: 12px;
-  background: #fbeef0;
+  background: var(--bt-tint);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,7 +186,7 @@
 .cold-chain-title {
   font-size: 13.5px;
   font-weight: 700;
-  color: #1f1f1f;
+  color: var(--bt-heading);
 }
 
 .cold-chain-sub {

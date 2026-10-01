@@ -27,20 +27,20 @@
   font-weight: 700;
   letter-spacing: -0.035em;
   margin: 0;
-  color: #1F1F1F;
+  color: var(--bt-heading);
 }
 
 .lead {
   font-size: 17px;
   line-height: 1.6;
-  color: #5F5B59;
+  color: var(--bt-text-muted);
 }
 
 .note {
   display: flex;
   align-items: center;
   gap: 22px;
-  background: #FBEEF0;
+  background: var(--bt-tint);
   border-radius: 20px;
   padding: 24px 28px;
   max-width: 420px;
@@ -70,13 +70,13 @@
 .note-title {
   font-size: 16px;
   font-weight: 700;
-  color: #1F1F1F;
+  color: var(--bt-heading);
 }
 
 .note-text {
   font-size: 14.5px;
   line-height: 1.5;
-  color: #5F5B59;
+  color: var(--bt-text-muted);
 }
 
 .steps {
@@ -126,7 +126,7 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: #FBEEF0;
+  background: var(--bt-tint);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,14 +144,14 @@
   line-height: 1.28;
   font-weight: 700;
   letter-spacing: -0.015em;
-  color: #1F1F1F;
+  color: var(--bt-heading);
   min-height: 46px;
 }
 
 .card-text {
   font-size: 14px;
   line-height: 1.55;
-  color: #6B6563;
+  color: var(--bt-text-soft);
   display: flex;
   flex-direction: column;
   gap: 8px;

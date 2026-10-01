@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 
 import { injectCurrentLocale, localeRoute } from '../i18n';
@@ -15,7 +14,7 @@ type ReportStatus = 'ok' | 'remark' | 'pending';
   selector: 'app-audit',
   imports: [SiteHeader, SiteFooter, AuditBrief, RouterLink],
   templateUrl: './audit.html',
-  styleUrl: './audit.css',
+  styleUrls: ['../shared/info-page.css', './audit.css'],
 })
 export default class Audit {
   /** "Order an audit" leads to the order page while online ordering is not live yet. */
@@ -64,11 +63,10 @@ export default class Audit {
   };
 
   constructor() {
-    inject(Title).setTitle($localize`:@@audit.meta.title:Аудит виробників IQF-ягоди — BerryTrace`);
-    inject(Meta).updateTag({
-      name: 'description',
-      content: $localize`:@@audit.meta.description:Незалежний аудит виробника IQF-ягоди за вашим технічним завданням: потужності, холодний ланцюг, документи, простежуваність, проби. Звіт — у кабінеті на платформі.`,
+    inject(Seo).set({
+      page: 'audit',
+      title: $localize`:@@audit.meta.title:Аудит виробників IQF-ягоди — BerryTrace`,
+      description: $localize`:@@audit.meta.description:Незалежний аудит виробника IQF-ягоди за вашим технічним завданням: потужності, холодний ланцюг, документи, простежуваність, проби. Звіт — у кабінеті на платформі.`,
     });
-    inject(Seo).update('audit');
   }
 }

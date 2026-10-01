@@ -4,7 +4,7 @@
 
 .footer {
   background: #FCF6F7;
-  border-top: 1px solid #F1E3E6;
+  border-top: 1px solid var(--bt-border);
   padding: 80px var(--bt-gutter) 0;
   position: relative;
   overflow: hidden;
@@ -27,7 +27,7 @@
 .tagline {
   font-size: 15px;
   line-height: 1.6;
-  color: #5F5B59;
+  color: var(--bt-text-muted);
   max-width: 320px;
 }
 
@@ -49,13 +49,13 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #6B6563;
+  color: var(--bt-text-soft);
   margin-bottom: 6px;
 }
 
 .link {
   font-size: 15px;
-  color: #3A3A3A;
+  color: var(--bt-text);
 }
 
 .contact {
@@ -63,7 +63,16 @@
   align-items: center;
   gap: 12px;
   font-size: 15px;
-  color: #3A3A3A;
+  color: var(--bt-text);
+}
+
+a.contact {
+  text-decoration: none;
+}
+
+a.contact:hover {
+  color: var(--bt-accent-dark);
+  text-decoration: underline;
 }
 
 .contact-icon {
@@ -71,7 +80,7 @@
   height: 34px;
   border-radius: 50%;
   background: #FFFFFF;
-  border: 1px solid #F1E3E6;
+  border: 1px solid var(--bt-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +91,7 @@
   position: relative;
   z-index: 1;
   margin-top: 64px;
-  border-top: 1px solid #F1E3E6;
+  border-top: 1px solid var(--bt-border);
   padding: 24px 0 28px;
   display: flex;
   justify-content: space-between;

@@ -10,7 +10,7 @@
   gap: 14px;
   padding: 28px;
   background: #ffffff;
-  border: 1px solid #f1e3e6;
+  border: 1px solid var(--bt-border);
   border-radius: 20px;
   box-shadow: 0 18px 40px rgba(125, 31, 46, 0.07);
 }
@@ -18,7 +18,7 @@
 .label {
   font-size: 14px;
   font-weight: 600;
-  color: #3a3a3a;
+  color: var(--bt-text);
 }
 
 .row {
@@ -34,8 +34,8 @@
   padding: 0 18px;
   border: 1px solid #e6dadc;
   border-radius: 999px;
-  background: #fdfdfc;
-  color: #1f1f1f;
+  background: var(--bt-bg);
+  color: var(--bt-heading);
   font-family: 'Archivo', Helvetica, sans-serif;
   font-size: 16px;
   outline: none;
@@ -75,7 +75,7 @@
   height: 16px;
   box-sizing: border-box;
   border: 2px solid rgba(253, 253, 252, 0.4);
-  border-top-color: #fdfdfc;
+  border-top-color: var(--bt-bg);
   border-radius: 50%;
   animation: bt-spin 0.7s linear infinite;
 }
@@ -98,7 +98,7 @@
 .hint {
   font-size: 13.5px;
   line-height: 1.5;
-  color: #6b6563;
+  color: var(--bt-text-soft);
 }
 
 .card--success {
@@ -129,19 +129,19 @@
 .success-title {
   font-size: 18px;
   font-weight: 600;
-  color: #1f1f1f;
+  color: var(--bt-heading);
 }
 
 .success-body {
   font-size: 15px;
   line-height: 1.5;
-  color: #5f5b59;
+  color: var(--bt-text-muted);
   overflow-wrap: anywhere;
 }
 
 .success-email {
   font-weight: 600;
-  color: #3a3a3a;
+  color: var(--bt-text);
 }
 
 .visually-hidden {

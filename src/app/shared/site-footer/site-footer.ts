@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { CookieConsent } from '../../cookie-consent/cookie-consent';
 import { injectCurrentLocale, localeRoute } from '../../i18n';
 import { LanguageSwitcher } from '../language-switcher/language-switcher';
+import { SITE_CONFIG, phoneLink } from '../../site-config';
 import { Logo } from '../logo/logo';
 
 @Component({
@@ -22,5 +23,9 @@ export class SiteFooter {
   protected readonly about = localeRoute(this.locale, 'about');
   protected readonly customs = localeRoute(this.locale, 'customs');
   protected readonly terms = localeRoute(this.locale, 'terms');
+  protected readonly email = SITE_CONFIG.contactEmail;
+  protected readonly emailLink = `mailto:${SITE_CONFIG.contactEmail}`;
+  protected readonly phone = SITE_CONFIG.phoneNumber;
+  protected readonly phoneLink = phoneLink();
   protected readonly privacy = localeRoute(this.locale, 'privacy');
 }
