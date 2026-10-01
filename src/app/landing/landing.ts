@@ -9,6 +9,8 @@ import { ViewportScroller } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
+import { Seo } from '../seo';
+import { SITE_CONFIG } from '../site-config';
 import { Audience } from './audience/audience';
 import { Cta } from './cta/cta';
 import { Geography } from './geography/geography';
@@ -75,6 +77,32 @@ export default class Landing {
     inject(Meta).updateTag({
       name: 'description',
       content: $localize`:@@meta.description:Перевірені українські виробники IQF-ягід, прозорий контроль кожної партії — від поля до складу — та мінімум бюрократії.`,
+    });
+
+    inject(Seo).update('', {
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Organization',
+            '@id': `${SITE_CONFIG.siteUrl}/#organization`,
+            name: 'BerryTrace',
+            url: `${SITE_CONFIG.siteUrl}/`,
+            logo: `${SITE_CONFIG.siteUrl}/favicon.svg`,
+            image: `${SITE_CONFIG.siteUrl}/og-image.jpg`,
+            email: 'sales@berrytrace.com',
+            address: { '@type': 'PostalAddress', addressLocality: 'Vinnytsia', addressCountry: 'UA' },
+          },
+          {
+            '@type': 'WebSite',
+            '@id': `${SITE_CONFIG.siteUrl}/#website`,
+            url: `${SITE_CONFIG.siteUrl}/`,
+            name: 'BerryTrace',
+            inLanguage: ['en', 'pl', 'uk'],
+            publisher: { '@id': `${SITE_CONFIG.siteUrl}/#organization` },
+          },
+        ],
+      },
     });
 
     const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;

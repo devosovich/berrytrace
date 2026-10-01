@@ -235,6 +235,12 @@
   font-size: 14px;
   font-weight: 600;
   color: #FFFFFF;
+  text-decoration: none;
+}
+
+.catalog-link:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
 }
 
 @media (max-width: 1024px) {

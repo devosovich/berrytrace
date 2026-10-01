@@ -6,6 +6,7 @@ import { injectCurrentLocale, localeRoute } from '../i18n';
 import { SiteFooter } from '../shared/site-footer/site-footer';
 import { SiteHeader } from '../shared/site-header/site-header';
 import { AuditBrief } from './audit-brief/audit-brief';
+import { Seo } from '../seo';
 
 type ReportStatus = 'ok' | 'remark' | 'pending';
 
@@ -68,5 +69,6 @@ export default class Audit {
       name: 'description',
       content: $localize`:@@audit.meta.description:Незалежний аудит виробника IQF-ягоди за вашим технічним завданням: потужності, холодний ланцюг, документи, простежуваність, проби. Звіт — у кабінеті на платформі.`,
     });
+    inject(Seo).update('audit');
   }
 }

@@ -8,6 +8,7 @@ import { SiteHeader } from '../shared/site-header/site-header';
 import { whatsappLink } from '../site-config';
 import { SubscribeForm } from './subscribe-form/subscribe-form';
 import { WhatsappCard } from './whatsapp-card/whatsapp-card';
+import { Seo } from '../seo';
 
 /** "Order berries" page: online ordering is not live yet, so it offers a mailing list and WhatsApp. */
 @Component({
@@ -26,5 +27,6 @@ export default class Order {
       name: 'description',
       content: $localize`:@@order.meta.description:Онлайн-замовлення IQF-ягоди на BerryTrace скоро запрацює. Підпишіться на повідомлення або напишіть нам у WhatsApp.`,
     });
+    inject(Seo).update('order');
   }
 }

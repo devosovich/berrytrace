@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { injectCurrentLocale, localeRoute } from '../i18n';
 import { SiteFooter } from '../shared/site-footer/site-footer';
 import { SiteHeader } from '../shared/site-header/site-header';
+import { Seo } from '../seo';
 
 /** "About us" page. */
 @Component({
@@ -24,5 +25,6 @@ export default class About {
       name: 'description',
       content: $localize`:@@about.meta.description:BerryTrace — B2B-сервіс постачання української IQF-ягоди: співпрацюємо з надійними перевіреними виробниками та контролюємо якість, логістику й документи на кожному етапі.`,
     });
+    inject(Seo).update('about');
   }
 }

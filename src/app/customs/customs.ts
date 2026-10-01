@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { injectCurrentLocale, localeRoute } from '../i18n';
 import { SiteFooter } from '../shared/site-footer/site-footer';
 import { SiteHeader } from '../shared/site-header/site-header';
+import { Seo } from '../seo';
 
 /** "Customs and logistics" page. */
 @Component({
@@ -23,5 +24,6 @@ export default class Customs {
       name: 'description',
       content: $localize`:@@customs.meta.description:Рефрижераторна доставка IQF-ягоди, експортні документи та митне оформлення — від виробника до вашого складу. Одна команда на всьому шляху.`,
     });
+    inject(Seo).update('customs');
   }
 }

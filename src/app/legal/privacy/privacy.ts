@@ -3,6 +3,7 @@ import { Meta, Title } from '@angular/platform-browser';
 
 import { SiteFooter } from '../../shared/site-footer/site-footer';
 import { SiteHeader } from '../../shared/site-header/site-header';
+import { Seo } from '../../seo';
 
 /** Privacy policy. Draft text: have it reviewed by a lawyer before relying on it. */
 @Component({
@@ -67,5 +68,6 @@ export default class Privacy {
       name: 'description',
       content: $localize`:@@privacy.meta.description:Які дані збирає BerryTrace, навіщо їх використовує, як довго зберігає та які права має користувач.`,
     });
+    inject(Seo).update('privacy');
   }
 }

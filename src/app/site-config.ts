@@ -4,6 +4,9 @@
  * the fallbacks are the placeholders from the design.
  */
 export const SITE_CONFIG = {
+  /** Public origin of the production site, used for canonical URLs, hreflang and social tags. */
+  siteUrl: (import.meta.env.VITE_SITE_URL || 'https://berrytrace.com').replace(/\/$/, ''),
+
   /**
    * URL the "notify me" form POSTs `{ email, locale }` to as JSON. The site is static (GitHub Pages),
    * so this must be an external mailing-list service or form backend. Empty = not configured yet:

@@ -3,6 +3,7 @@ import { Meta, Title } from '@angular/platform-browser';
 
 import { SiteFooter } from '../../shared/site-footer/site-footer';
 import { SiteHeader } from '../../shared/site-header/site-header';
+import { Seo } from '../../seo';
 
 /** Public offer (terms of use). Draft text: have it reviewed by a lawyer before relying on it. */
 @Component({
@@ -72,5 +73,6 @@ export default class Terms {
       name: 'description',
       content: $localize`:@@terms.meta.description:Публічна оферта BerryTrace: загальні умови користування сайтом і порядок взаємодії із замовниками.`,
     });
+    inject(Seo).update('terms');
   }
 }

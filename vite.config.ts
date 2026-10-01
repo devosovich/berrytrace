@@ -2,6 +2,7 @@
 
 import { Plugin, defineConfig } from 'vite';
 import analog from '@analogjs/platform';
+import pages from './site-pages.json';
 
 /**
  * Analog's production build defines `ngServerMode` from the top-level `build.ssr`, which is unset
@@ -44,8 +45,9 @@ function inlineGlobalCss(): Plugin {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Served from https://devosovich.github.io/berrytrace/. Use '/' for a custom domain.
-  base: '/berrytrace/',
+  // Served from https://devosovich.github.io/berrytrace/ for now. On the custom domain (berrytrace.com)
+  // build with VITE_BASE=/ (see README).
+  base: process.env.VITE_BASE || '/berrytrace/',
   build: {
     target: ['es2020'],
   },
@@ -59,7 +61,7 @@ export default defineConfig(({ mode }) => ({
       static: true,
       prerender: {
         // Expanded per locale by the i18n option: / (English), /en, /pl, /uk, and the same for each page.
-        routes: ['/', '/order', '/audit', '/about', '/customs', '/privacy', '/terms'],
+        routes: pages,
       },
       i18n: {
         // Unprefixed URLs render in English.
