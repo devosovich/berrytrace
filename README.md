@@ -30,7 +30,7 @@ Deployment-specific values are read from `VITE_*` environment variables at build
 |---|---|---|
 | `VITE_SUBSCRIBE_ENDPOINT` | URL the `/order` form POSTs `{ "email", "locale" }` to (external service — the site is static) | empty: the form shows its error state |
 | `VITE_WHATSAPP_NUMBER` | WhatsApp links and number on `/order` | `+380 44 000 00 00` (placeholder) |
-| `VITE_PRIVACY_POLICY_URL` | Link in the cookie banner | empty: shown as plain text |
+| `VITE_PRIVACY_POLICY_URL` | Link in the cookie banner | empty: the built-in `/privacy` page |
 
 ## Cookie consent
 

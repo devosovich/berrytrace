@@ -10,6 +10,7 @@ import {
   viewChild,
 } from '@angular/core';
 
+import { injectCurrentLocale, localeUrl } from '../i18n';
 import { SITE_CONFIG } from '../site-config';
 import { CookieConsent } from './cookie-consent';
 
@@ -25,7 +26,7 @@ import { CookieConsent } from './cookie-consent';
 })
 export class CookieBanner {
   protected readonly consent = inject(CookieConsent);
-  protected readonly privacyUrl = SITE_CONFIG.privacyPolicyUrl || null;
+  protected readonly privacyUrl = SITE_CONFIG.privacyPolicyUrl || localeUrl(injectCurrentLocale(), 'privacy');
 
   /** Toggle positions in the settings view; applied only by "Save choice". Off by default. */
   protected readonly analytics = signal(this.consent.analytics());

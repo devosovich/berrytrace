@@ -59,7 +59,7 @@ export default defineConfig(({ mode }) => ({
       static: true,
       prerender: {
         // Expanded per locale by the i18n option: / (English), /en, /pl, /uk, and the same for each page.
-        routes: ['/', '/order', '/audit'],
+        routes: ['/', '/order', '/audit', '/about', '/customs', '/privacy', '/terms'],
       },
       i18n: {
         // Unprefixed URLs render in English.

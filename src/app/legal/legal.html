@@ -1,0 +1,29 @@
+<app-site-header />
+<main class="main">
+  <section class="hero hero--media">
+    <div class="hero-copy">
+      <h1 class="title">{{ title }}</h1>
+      <p class="lead">{{ lead }}</p>
+    </div>
+    <img class="hero-img" [src]="image.src" [attr.srcset]="image.srcset" sizes="(max-width: 1024px) calc(100vw - 80px), 560px" [width]="image.width" [height]="image.height" [alt]="image.alt" fetchpriority="high" decoding="async">
+  </section>
+
+  <article class="legal">
+    @for (section of sections; track section.title) {
+      <section class="legal-section">
+        <h2 class="legal-heading">{{ section.title }}</h2>
+        @for (paragraph of section.paragraphs; track paragraph) {
+          <p class="legal-paragraph">{{ paragraph }}</p>
+        }
+        @if (section.items.length) {
+          <ul class="legal-list">
+            @for (item of section.items; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        }
+      </section>
+    }
+  </article>
+</main>
+<app-site-footer />

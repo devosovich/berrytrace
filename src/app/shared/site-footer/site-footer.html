@@ -12,11 +12,11 @@
       </div>
       <div class="column">
         <div class="column-title" i18n="@@siteFooter.columnTitle1">Платформа</div>
-        <a class="link" [routerLink]="order" i18n="@@siteFooter.link1">Каталог продукції</a><a class="link" [routerLink]="home" fragment="process" i18n="@@siteHeader.nav2">Як відбувається співпраця</a><div class="link" i18n="@@siteFooter.link2">Про нас</div><a class="link" [routerLink]="order" i18n="@@siteFooter.link3">Увійти в кабінет</a>
+        <a class="link" [routerLink]="order" i18n="@@siteFooter.link1">Каталог продукції</a><a class="link" [routerLink]="home" fragment="process" i18n="@@siteHeader.nav2">Як відбувається співпраця</a><a class="link" [routerLink]="about" i18n="@@siteFooter.link2">Про нас</a><a class="link" [routerLink]="order" i18n="@@siteFooter.link3">Увійти в кабінет</a>
       </div>
       <div class="column">
         <div class="column-title" i18n="@@siteFooter.columnTitle2">Послуги</div>
-        <a class="link" [routerLink]="audit" i18n="@@siteHeader.nav5">Аудит виробників</a><div class="link" i18n="@@siteFooter.link5">Митниця і логістика</div>
+        <a class="link" [routerLink]="audit" i18n="@@siteHeader.nav5">Аудит виробників</a><a class="link" [routerLink]="customs" i18n="@@siteFooter.link5">Митниця і логістика</a>
       </div>
       <div class="column">
         <div class="column-title" i18n="@@siteFooter.columnTitle3">Контакти</div>
@@ -25,6 +25,6 @@
     </div>
     <div class="bottom">
       <div i18n="@@siteFooter.bottom">© 2026 BerryTrace. Усі права захищено.</div>
-      <div class="legal"><span i18n="@@siteFooter.legal1">Публічна оферта</span><span i18n="@@siteFooter.legal2">Політика конфіденційності</span><button type="button" class="cookie-settings" (click)="cookieConsent.show('settings')" i18n="@@footer.cookieSettings">Налаштування cookie</button></div>
+      <div class="legal"><a [routerLink]="terms" i18n="@@siteFooter.legal1">Публічна оферта</a><a [routerLink]="privacy" i18n="@@siteFooter.legal2">Політика конфіденційності</a><button type="button" class="cookie-settings" (click)="cookieConsent.show('settings')" i18n="@@footer.cookieSettings">Налаштування cookie</button></div>
     </div>
   </footer>

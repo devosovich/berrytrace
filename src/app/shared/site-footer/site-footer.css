@@ -96,6 +96,14 @@
   gap: 28px;
 }
 
+.legal a {
+  color: inherit;
+}
+
+.legal a:hover {
+  color: var(--bt-accent-dark);
+}
+
 /* Reopens the cookie banner in its settings view. Styled like the other legal links. */
 .cookie-settings {
   min-height: 44px;

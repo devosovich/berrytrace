@@ -14,7 +14,7 @@ export const SITE_CONFIG = {
   /** WhatsApp number in international format; any spaces or punctuation are stripped for links. */
   whatsappNumber: import.meta.env.VITE_WHATSAPP_NUMBER || '+380 44 000 00 00',
 
-  /** Privacy policy page linked from the cookie banner. Empty = shown as plain text. */
+  /** External privacy policy URL for the cookie banner. Empty = the built-in /privacy page. */
   privacyPolicyUrl: import.meta.env.VITE_PRIVACY_POLICY_URL ?? '',
 
   /**

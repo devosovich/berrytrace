@@ -11,7 +11,7 @@ export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = 'en';
 
 /** Pages of the site, as paths relative to a locale root (`''` is the landing). */
-export type Page = '' | 'order' | 'audit';
+export type Page = '' | 'order' | 'audit' | 'about' | 'customs' | 'privacy' | 'terms';
 
 export function isLocale(value: string | null | undefined): value is Locale {
   return LOCALES.includes(value as Locale);
