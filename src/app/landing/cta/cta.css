@@ -94,6 +94,7 @@
 
 .btn-light {
   display: inline-flex;
+  text-decoration: none;
   align-items: center;
   gap: 12px;
   font-weight: 600;
@@ -111,6 +112,7 @@
 
 .btn-outline {
   display: inline-flex;
+  text-decoration: none;
   align-items: center;
   gap: 12px;
   font-weight: 600;

@@ -4,38 +4,38 @@
     <div class="copy">
       <div class="tag">
         <span class="tag-dot"></span>
-        <span class="tag-text" i18n>Безкоштовна реєстрація</span>
+        <span class="tag-text" i18n="@@cta.tagText">Безкоштовна реєстрація</span>
       </div>
-      <h2 class="title" i18n>Закупівля IQF-ягід з України ще ніколи не була такою простою</h2>
-      <p class="lead" i18n>Знаходьте перевірених виробників, обирайте потрібну продукцію та керуйте поставками в одному місці. Зареєструйтеся безкоштовно й отримайте доступ до каталогу BerryTrace.</p>
+      <h2 class="title" i18n="@@cta.title">Закупівля IQF-ягід з України ще ніколи не була такою простою</h2>
+      <p class="lead" i18n="@@cta.lead">Знаходьте перевірених виробників, обирайте потрібну продукцію та керуйте поставками в одному місці. Зареєструйтеся безкоштовно й отримайте доступ до каталогу BerryTrace.</p>
       <div class="buttons">
-        <button class="btn-light" type="button"><ng-container i18n>Зареєструватися безкоштовно</ng-container>
+        <a class="btn-light" [routerLink]="order"><ng-container i18n="@@cta.btnLight">Зареєструватися безкоштовно</ng-container>
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#7D1F2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg>
-        </button>
-        <button class="btn-outline" type="button" i18n>Написати нам</button>
+        </a>
+        <a class="btn-outline" [routerLink]="order" i18n="@@cta.btnOutline">Написати нам</a>
       </div>
       <div class="perks">
-        <div class="perk"><span class="perk-icon"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7.5"></path></svg></span><ng-container i18n>Перевірені виробники</ng-container></div><div class="perk"><span class="perk-icon"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7.5"></path></svg></span><ng-container i18n>Каталог продукції</ng-container></div><div class="perk"><span class="perk-icon"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7.5"></path></svg></span><ng-container i18n>Поставки в одному місці</ng-container></div>
+        <div class="perk"><span class="perk-icon"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7.5"></path></svg></span><ng-container i18n="@@cta.perk1">Перевірені виробники</ng-container></div><div class="perk"><span class="perk-icon"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7.5"></path></svg></span><ng-container i18n="@@cta.perk2">Каталог продукції</ng-container></div><div class="perk"><span class="perk-icon"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7.5"></path></svg></span><ng-container i18n="@@cta.perk3">Поставки в одному місці</ng-container></div>
       </div>
     </div>
     <div class="catalog">
       <div class="catalog-head">
-        <span class="catalog-title" i18n>Каталог BerryTrace</span>
-        <span class="catalog-tag" i18n>IQF-ягоди</span>
+        <span class="catalog-title" i18n="@@cta.catalogTitle">Каталог BerryTrace</span>
+        <span class="catalog-tag" i18n="@@cta.catalogTag">IQF-ягоди</span>
       </div>
       <div class="item">
           <div class="item-icon"><svg viewBox="-12 -16 24 30" width="30" height="36"><use href="#rb"></use></svg></div>
-          <div class="item-body"><div class="item-title" i18n>Малина IQF</div><div class="item-sub" i18n>Вінницька область</div></div>
+          <div class="item-body"><div class="item-title" i18n="@@cta.itemTitle1">Малина IQF</div><div class="item-sub" i18n="@@cta.itemSub1">Вінницька область</div></div>
         </div>
       <div class="item">
           <div class="item-icon"><svg viewBox="-12 -16 24 30" width="30" height="36"><use href="#bb"></use></svg></div>
-          <div class="item-body"><div class="item-title" i18n>Чорниця IQF</div><div class="item-sub" i18n>Рівненська область</div></div>
+          <div class="item-body"><div class="item-title" i18n="@@cta.itemTitle2">Чорниця IQF</div><div class="item-sub" i18n="@@cta.itemSub2">Рівненська область</div></div>
         </div>
       <div class="item">
           <div class="item-icon"><svg viewBox="-12 -16 24 30" width="30" height="36"><use href="#sb"></use></svg></div>
-          <div class="item-body"><div class="item-title" i18n>Полуниця IQF</div><div class="item-sub" i18n>Житомирська область</div></div>
+          <div class="item-body"><div class="item-title" i18n="@@cta.itemTitle3">Полуниця IQF</div><div class="item-sub" i18n="@@cta.itemSub3">Житомирська область</div></div>
         </div>
-      <div class="catalog-link"><ng-container i18n>Переглянути весь каталог</ng-container>
+      <div class="catalog-link"><ng-container i18n="@@cta.catalogLink">Переглянути весь каталог</ng-container>
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 H19"></path><path d="M13 6 L19 12 L13 18"></path></svg>
       </div>
     </div>
