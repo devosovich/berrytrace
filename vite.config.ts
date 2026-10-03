@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 
-import { Plugin, defineConfig } from 'vite';
+import { Plugin, defineConfig, loadEnv } from 'vite';
 import analog from '@analogjs/platform';
 import { DEFAULT_LOCALE, LOCALES, PAGES, SOURCE_LOCALE, buildRobots, buildSitemap } from './src/app/site.ts';
 
@@ -53,48 +53,61 @@ function seoFiles(origin: string): Plugin {
     apply: 'build',
     generateBundle() {
       if (this.environment.name !== 'client') return;
-      this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: buildSitemap(origin) });
-      this.emitFile({ type: 'asset', fileName: 'robots.txt', source: buildRobots(origin) });
+      this.emitFile({
+        type: 'asset',
+        fileName: 'sitemap.xml',
+        source: buildSitemap(origin),
+      });
+      this.emitFile({
+        type: 'asset',
+        fileName: 'robots.txt',
+        source: buildRobots(origin),
+      });
     },
   };
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  // Served from https://devosovich.github.io/berrytrace/ for now. On the custom domain (berrytrace.com)
-  // build with VITE_BASE=/ (see README).
-  base: process.env.VITE_BASE || '/berrytrace/',
-  build: {
-    target: ['es2020'],
-  },
-  resolve: {
-    mainFields: ['module'],
-  },
-  plugins: [
-    analog({
-      // Static site generation: every route below is prerendered to HTML at build time.
-      ssr: true,
-      static: true,
-      prerender: {
-        // Expanded per locale by the i18n option: / (English), /en, /pl, /uk, and the same for each page.
-        routes: PAGES.map((page) => `/${page}`),
-      },
-      i18n: {
-        // Unprefixed URLs render in English.
-        defaultLocale: DEFAULT_LOCALE,
-        // The first entry must stay the source locale the templates are written in (Ukrainian).
-        locales: [SOURCE_LOCALE, ...LOCALES.filter((locale) => locale !== SOURCE_LOCALE)],
-      },
-    }),
-    ngServerModePerEnvironment(),
-    inlineGlobalCss(),
-    seoFiles((process.env.VITE_SITE_URL || 'https://berrytrace.com').replace(/\/$/, '')),
-  ],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['src/test-setup.ts'],
-    include: ['src/**/*.spec.ts'],
-    reporters: ['default'],
-  },
-}));
+export default defineConfig(({ mode }) => {
+  // `.env` files are not in process.env inside the config; loadEnv merges them with the real environment.
+  const env = loadEnv(mode, process.cwd(), 'VITE_');
+
+  return {
+    // Served from https://devosovich.github.io/berrytrace/ for now. On the custom domain (berrytrace.com)
+    // build with VITE_BASE=/ (see README).
+    base: env['VITE_BASE'] || '/berrytrace/',
+    build: {
+      target: ['es2020'],
+    },
+    resolve: {
+      mainFields: ['module'],
+    },
+    plugins: [
+      analog({
+        // Static site generation: every route below is prerendered to HTML at build time.
+        ssr: true,
+        static: true,
+        prerender: {
+          // Expanded per locale by the i18n option: / (English), /en, /pl, /uk, and the same for each page.
+          routes: PAGES.map((page) => `/${page}`),
+        },
+        i18n: {
+          // Unprefixed URLs render in English.
+          defaultLocale: DEFAULT_LOCALE,
+          // The first entry must stay the source locale the templates are written in (Ukrainian).
+          locales: [SOURCE_LOCALE, ...LOCALES.filter((locale) => locale !== SOURCE_LOCALE)],
+        },
+      }),
+      ngServerModePerEnvironment(),
+      inlineGlobalCss(),
+      seoFiles((env['VITE_SITE_URL'] || 'https://berrytrace.com').replace(/\/$/, '')),
+    ],
+    test: {
+      globals: true,
+      environment: 'jsdom',
+      setupFiles: ['src/test-setup.ts'],
+      include: ['src/**/*.spec.ts'],
+      reporters: ['default'],
+    },
+  };
+});

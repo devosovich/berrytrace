@@ -277,7 +277,7 @@
     "privacy.s3.title": "3. Cookies",
     "privacy.s3.p1": "Necessary cookies keep the website working and do not require consent. We turn on analytics and marketing cookies only after you agree. You can change your choice at any time via “Cookie settings” at the bottom of the page. We store it in your browser.",
     "privacy.s4.title": "4. Sharing data with third parties",
-    "privacy.s4.p1": "We do not sell your data. It may be processed by services that help us operate (email notifications, analytics, hosting) only to the extent needed for those purposes.",
+    "privacy.s4.p1": "We do not sell your data. The email address for platform launch notifications is stored by the MailerLite mailing service, and analytics and hosting services may also process data — only to the extent needed for those purposes.",
     "privacy.s5.title": "5. Retention",
     "privacy.s5.p1": "We keep data no longer than needed for the purposes it was collected for. You can unsubscribe from notifications or ask us to delete your data at any time.",
     "privacy.s6.title": "6. Your rights",
@@ -401,6 +401,7 @@
     "geography.mapLabel": "Map of Ukraine with partner regions",
     "geography.regionLabel": "{$REGION} — producers: {$COUNT}",
     "geography.producersCount": "{VAR_PLURAL, plural, =1 {1 producer} =2 {2 producers} =3 {3 producers} other {{INTERPOLATION} producers}}",
-    "geography.tipProducers": "{VAR_PLURAL, plural, =1 {1 producer} =2 {2 producers} =3 {3 producers} other {{INTERPOLATION} producers}}"
+    "geography.tipProducers": "{VAR_PLURAL, plural, =1 {1 producer} =2 {2 producers} =3 {3 producers} other {{INTERPOLATION} producers}}",
+    "order.form.consent": "By subscribing, you agree to receive notifications from BerryTrace about the platform launch. Learn more in the {$START_LINK}Privacy policy{$CLOSE_LINK}."
   }
 }

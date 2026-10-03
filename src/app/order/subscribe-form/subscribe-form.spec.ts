@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { Newsletter, isValidEmail } from '../newsletter';
 import { SubscribeForm } from './subscribe-form';
@@ -35,10 +36,17 @@ describe('SubscribeForm', () => {
 
   beforeEach(async () => {
     subscribe = vi.fn().mockResolvedValue(undefined);
-    TestBed.configureTestingModule({ providers: [{ provide: Newsletter, useValue: { subscribe } }] });
+    TestBed.configureTestingModule({
+      providers: [provideRouter([]), { provide: Newsletter, useValue: { subscribe } }],
+    });
     fixture = TestBed.createComponent(SubscribeForm);
     element = fixture.nativeElement;
     await fixture.whenStable();
+  });
+
+  it('links the consent line to the privacy policy', () => {
+    const link = element.querySelector<HTMLAnchorElement>('.hint a');
+    expect(link?.getAttribute('href')).toBe('/privacy');
   });
 
   it('shows an error for an invalid address and does not send it', async () => {

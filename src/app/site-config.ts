@@ -14,6 +14,12 @@ export const SITE_CONFIG = {
    */
   subscribeEndpoint: import.meta.env.VITE_SUBSCRIBE_ENDPOINT ?? '',
 
+  /**
+   * MailerLite only: name of a custom subscriber field (e.g. `language`) that receives the visitor's
+   * locale. Empty = the locale is not sent. The field must exist in the MailerLite account and form.
+   */
+  subscribeLanguageField: import.meta.env.VITE_SUBSCRIBE_LANGUAGE_FIELD ?? '',
+
   /** Public contact email, shown in the footer and in structured data. */
   contactEmail: 'sales@berrytrace.com',
 

@@ -24,12 +24,13 @@ The site is served from `https://devosovich.github.io/berrytrace/`. Every push t
 
 ## Configuration
 
-Deployment-specific values are read from `VITE_*` environment variables at build time (`src/app/site-config.ts`). Locally, put them in a `.env` file; on GitHub Pages, add them as repository variables (`SUBSCRIBE_ENDPOINT`, `WHATSAPP_NUMBER`, `PRIVACY_POLICY_URL`), which the deploy workflow passes to the build.
+Deployment-specific values are read from `VITE_*` environment variables at build time (`src/app/site-config.ts`). Locally, copy `.env.example` to `.env` (`cp .env.example .env`) and edit it; on GitHub Pages, add them as repository variables (`SUBSCRIBE_ENDPOINT`, `WHATSAPP_NUMBER`, `PRIVACY_POLICY_URL`), which the deploy workflow passes to the build.
 
 | Variable | Used for | Default |
 |---|---|---|
-| `VITE_SUBSCRIBE_ENDPOINT` | URL the `/order` form POSTs `{ "email", "locale" }` to (external service — the site is static) | empty: the form shows its error state |
+| `VITE_SUBSCRIBE_ENDPOINT` | URL the `/order` form sends sign-ups to. A MailerLite form address (`https://assets.mailerlite.com/jsonp/<account>/forms/<form>/subscribe`) is sent as that form does (multipart `fields[email]`); any other URL gets `{ "email", "locale" }` as JSON | empty: the form shows its error state |
 | `VITE_WHATSAPP_NUMBER` | WhatsApp links and number on `/order` | `+380 44 000 00 00` (placeholder) |
+| `VITE_SUBSCRIBE_LANGUAGE_FIELD` | MailerLite only: custom field that receives the visitor's language (`uk`/`en`/`pl`); empty = not sent | empty |
 | `VITE_SITE_URL` | (repository variable `SITE_URL`) Public origin used for canonical URLs, `hreflang`, social tags and the sitemap | `https://berrytrace.com` |
 | `VITE_BASE` | Vite `base` path (repository variable `BASE`) | `/berrytrace/` (GitHub Pages project URL); use `/` on the custom domain |
 | `VITE_PRIVACY_POLICY_URL` | Link in the cookie banner | empty: the built-in `/privacy` page |

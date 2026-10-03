@@ -7,8 +7,9 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
-import { injectCurrentLocale } from '../../i18n';
+import { injectCurrentLocale, localeRoute } from '../../i18n';
 import { Newsletter, isValidEmail } from '../newsletter';
 
 /**
@@ -23,12 +24,14 @@ export type SubscribeStatus = 'idle' | 'invalid' | 'loading' | 'success' | 'fail
 /** "Notify me when the platform launches" e-mail form on the order page. */
 @Component({
   selector: 'app-subscribe-form',
+  imports: [RouterLink],
   templateUrl: './subscribe-form.html',
   styleUrl: './subscribe-form.css',
 })
 export class SubscribeForm {
   private readonly newsletter = inject(Newsletter);
   private readonly locale = injectCurrentLocale();
+  protected readonly privacy = localeRoute(this.locale, 'privacy');
   private readonly injector = inject(Injector);
 
   protected readonly status = signal<SubscribeStatus>('idle');

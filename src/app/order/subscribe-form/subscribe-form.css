@@ -95,6 +95,10 @@
   color: var(--bt-accent);
 }
 
+.hint .link {
+  text-decoration: underline;
+}
+
 .hint {
   font-size: 13.5px;
   line-height: 1.5;
