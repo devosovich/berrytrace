@@ -17,8 +17,8 @@ export default class Privacy {
   protected readonly image: LegalImage = {
     image: 'images/pages/privacy',
     width: 1024,
-    height: 572,
-    alt: $localize`:@@privacy.heroAlt:Закритий ноутбук, замок і документи на столі — захист ваших даних`,
+    height: 558,
+    alt: $localize`:@@privacy.heroAlt:Ноутбук із замком, документи та папка на столі — захист ваших даних`,
   };
 
   protected readonly sections: LegalSection[] = [
