@@ -54,7 +54,7 @@ export default class Privacy {
     },
     {
       title: $localize`:@@privacy.s7.title:7. Контакти`,
-      paragraphs: [$localize`:@@privacy.s7.p1:З питань щодо персональних даних пишіть на sales@berrytrace.com.`],
+      paragraphs: [$localize`:@@privacy.s7.p1:З питань щодо персональних даних пишіть на info@berrytrace.com.`],
       items: [],
     },
   ];

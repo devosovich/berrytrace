@@ -59,7 +59,7 @@ export default class Terms {
     },
     {
       title: $localize`:@@terms.s8.title:8. Контакти`,
-      paragraphs: [$localize`:@@terms.s8.p1:З питань щодо цієї оферти пишіть на sales@berrytrace.com.`],
+      paragraphs: [$localize`:@@terms.s8.p1:З питань щодо цієї оферти пишіть на info@berrytrace.com.`],
       items: [],
     },
   ];
