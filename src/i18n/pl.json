@@ -277,7 +277,7 @@
     "privacy.s3.title": "3. Pliki cookie",
     "privacy.s3.p1": "Niezbędne pliki cookie zapewniają działanie strony i nie wymagają zgody. Analityczne i marketingowe pliki cookie włączamy dopiero po Twojej zgodzie. Wybór możesz zmienić w dowolnym momencie w „Ustawieniach cookie” u dołu strony. Zapisujemy go w Twojej przeglądarce.",
     "privacy.s4.title": "4. Przekazywanie danych osobom trzecim",
-    "privacy.s4.p1": "Nie sprzedajemy Twoich danych. Adres e-mail do powiadomień o starcie platformy przechowuje usługa wysyłki MailerLite, a dane mogą przetwarzać także usługi analityczne i hostingowe — wyłącznie w zakresie potrzebnym do tych celów.",
+    "privacy.s4.p1": "Nie sprzedajemy Twoich danych. Adres e-mail do powiadomień o starcie platformy przechowuje usługa wysyłki MailerLite, a dane mogą przetwarzać także Google Analytics (za Twoją zgodą) i usługi hostingowe — wyłącznie w zakresie potrzebnym do tych celów.",
     "privacy.s5.title": "5. Okres przechowywania",
     "privacy.s5.p1": "Przechowujemy dane nie dłużej, niż to potrzebne do celów, dla których je zebrano. W każdej chwili możesz zrezygnować z powiadomień lub poprosić o usunięcie swoich danych.",
     "privacy.s6.title": "6. Twoje prawa",

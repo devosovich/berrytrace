@@ -1,4 +1,5 @@
 import {
+  DOCUMENT,
   Component,
   ElementRef,
   Injector,
@@ -9,6 +10,7 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { trackLead } from '../../analytics';
 import { injectCurrentLocale, localeRoute } from '../../i18n';
 import { Newsletter, isValidEmail } from '../newsletter';
 
@@ -32,6 +34,7 @@ export class SubscribeForm {
   private readonly newsletter = inject(Newsletter);
   private readonly locale = injectCurrentLocale();
   protected readonly privacy = localeRoute(this.locale, 'privacy');
+  private readonly document = inject(DOCUMENT);
   private readonly injector = inject(Injector);
 
   protected readonly status = signal<SubscribeStatus>('idle');
@@ -73,6 +76,7 @@ export class SubscribeForm {
       }
     }
 
+    if (!honeypot) trackLead(this.document, 'newsletter');
     this.subscribedEmail.set(email);
     this.status.set('success');
     // The form is replaced by the confirmation; move focus there so it is announced.

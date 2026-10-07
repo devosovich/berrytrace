@@ -1,3 +1,4 @@
+import { TrackLead } from '../analytics';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -12,7 +13,7 @@ import { Seo } from '../seo';
 /** "Order berries" page: online ordering is not live yet, so it offers a mailing list and WhatsApp. */
 @Component({
   selector: 'app-order',
-  imports: [SiteHeader, SiteFooter, SubscribeForm, WhatsappCard, RouterLink],
+  imports: [TrackLead, SiteHeader, SiteFooter, SubscribeForm, WhatsappCard, RouterLink],
   templateUrl: './order.html',
   styleUrl: './order.css',
 })

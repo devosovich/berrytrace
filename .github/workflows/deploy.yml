@@ -34,6 +34,7 @@ jobs:
           VITE_SUBSCRIBE_LANGUAGE_FIELD: ${{ vars.SUBSCRIBE_LANGUAGE_FIELD }}
           VITE_WHATSAPP_NUMBER: ${{ vars.WHATSAPP_NUMBER }}
           VITE_PRIVACY_POLICY_URL: ${{ vars.PRIVACY_POLICY_URL }}
+          VITE_GOOGLE_TAG_ID: ${{ vars.GOOGLE_TAG_ID }}
           # Production origin for canonical URLs and the sitemap, and the Vite base path (use / on berrytrace.com).
           VITE_SITE_URL: ${{ vars.SITE_URL }}
           VITE_BASE: ${{ vars.BASE }}

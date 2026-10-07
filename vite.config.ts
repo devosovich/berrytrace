@@ -2,7 +2,8 @@
 
 import { Plugin, defineConfig, loadEnv } from 'vite';
 import analog from '@analogjs/platform';
-import { DEFAULT_LOCALE, LOCALES, PAGES, SOURCE_LOCALE, buildRobots, buildSitemap } from './src/app/site.ts';
+import { DEFAULT_LOCALE, LOCALES, PAGES, SOURCE_LOCALE, buildRobots, buildSitemap } from './src/app/site';
+import { buildNotFound } from './src/app/not-found';
 
 /**
  * Analog's production build defines `ngServerMode` from the top-level `build.ssr`, which is unset
@@ -63,6 +64,8 @@ function seoFiles(origin: string): Plugin {
         fileName: 'robots.txt',
         source: buildRobots(origin),
       });
+      // GitHub Pages serves this file for any URL that does not exist.
+      this.emitFile({ type: 'asset', fileName: '404.html', source: buildNotFound(origin) });
     },
   };
 }
@@ -70,7 +73,7 @@ function seoFiles(origin: string): Plugin {
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   // `.env` files are not in process.env inside the config; loadEnv merges them with the real environment.
-  const env = loadEnv(mode, process.cwd(), 'VITE_');
+  const env = loadEnv(mode, '.', 'VITE_');
 
   return {
     // Served from https://devosovich.github.io/berrytrace/ for now. On the custom domain (berrytrace.com)
@@ -84,7 +87,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       analog({
-        // Static site generation: every route below is prerendered to HTML at build time.
+        // Static site generation: every route below is pre-rendered to HTML at build time.
         ssr: true,
         static: true,
         prerender: {

@@ -34,6 +34,7 @@ Deployment-specific values are read from `VITE_*` environment variables at build
 | `VITE_SITE_URL` | (repository variable `SITE_URL`) Public origin used for canonical URLs, `hreflang`, social tags and the sitemap | `https://berrytrace.com` |
 | `VITE_BASE` | Vite `base` path (repository variable `BASE`) | `/berrytrace/` (GitHub Pages project URL); use `/` on the custom domain |
 | `VITE_PRIVACY_POLICY_URL` | Link in the cookie banner | empty: the built-in `/privacy` page |
+| `VITE_GOOGLE_TAG_ID` | Google Analytics 4 measurement ID, loaded after analytics consent | empty: analytics off |
 
 ## Cookie consent
 

@@ -38,8 +38,8 @@ export const SITE_CONFIG = {
    */
   cookiePolicyVersion: 1,
 
-  /** Google Analytics 4 measurement ID. Loaded only after the visitor accepts analytics cookies. */
-  googleTagId: 'G-3739GE41DH',
+  /** Google Analytics 4 measurement ID. Set via VITE_GOOGLE_TAG_ID; empty = analytics off. Loaded only after the visitor accepts analytics cookies. */
+  googleTagId: import.meta.env.VITE_GOOGLE_TAG_ID ?? '',
 } as const;
 
 /** `tel:` link for the configured number. */

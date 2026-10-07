@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { TrackLead } from '../../analytics';
 import { CookieConsent } from '../../cookie-consent/cookie-consent';
 import { injectCurrentLocale, localeRoute } from '../../i18n';
 import { LanguageSwitcher } from '../language-switcher/language-switcher';
@@ -9,7 +10,7 @@ import { Logo } from '../logo/logo';
 
 @Component({
   selector: 'app-site-footer',
-  imports: [Logo, LanguageSwitcher, RouterLink],
+  imports: [TrackLead, Logo, LanguageSwitcher, RouterLink],
   templateUrl: './site-footer.html',
   styleUrl: './site-footer.css',
 })

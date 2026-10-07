@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 
+import { TrackLead } from '../../analytics';
 import { Logo } from '../../shared/logo/logo';
 import { SITE_CONFIG, phoneLink, whatsappLink } from '../../site-config';
 
 /** Chat-style card that sends visitors to WhatsApp while online ordering is not live yet. */
 @Component({
   selector: 'app-whatsapp-card',
-  imports: [Logo],
+  imports: [Logo, TrackLead],
   templateUrl: './whatsapp-card.html',
   styleUrl: './whatsapp-card.css',
 })
